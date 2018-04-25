@@ -21,7 +21,8 @@ int main(int argc, char *argv[])
        int lo = 5;
        Carte Test(lo,la,TypeCarte::PLAINES);
        Noeud tmp(Test);
-
+       std::cout<<tmp.getCarte().getCase(0).type<<std::endl;
+       std::cout<<tmp.getCarte().getCase(24).type<<std::endl;
        return 0;
 
 

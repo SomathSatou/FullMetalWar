@@ -1,23 +1,20 @@
 #include "arbrestochastique.h"
 #include "Moteur/Piece/allpieces.h"
 
-Noeud::Noeud(const Carte & c) : _carte(Carte(c)),_nbr_recherche(0),_nbr_valeur(0),_fils(0),_Actions(0),_pere(nullptr),_prof(0){
+std::vector<Action> randomAction(CarteStoch & c){std::vector<Action> a; return a;}
+
+Noeud::Noeud(const Carte & c) : _carte(c),_nbr_recherche(0),_nbr_valeur(0),_fils(0),_Actions(0),_pere(nullptr),_prof(0){
     load();
 }
 
-Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(Carte(pere->getCarte())),_nbr_recherche(0),_nbr_valeur(0),_fils(0),_Actions(Actions),_pere(pere) {
+Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(pere->getCarte()),_nbr_recherche(0),_nbr_valeur(0),_fils(0),_Actions(Actions),_pere(pere) {
         for (auto A : _Actions) {
-            coordonnees dest;
-            dest.first = A.dest/_carte.getLongueur();
-            dest.second = A.dest%_carte.getLongueur();
             switch(A.faire){
                 case typeAction::DEPLACER:
-
-                    _carte.getCase(A.src).getPiece()->deplacement(dest                                                                                                                                                                                                        );
+                    _carte.deplacement(A.src,A.dest);
                     break;
                 case typeAction::ATTAQUER:
-                    //simulation.getCase(A.src).getPiece()->attaque(dest)
-                    break;
+                    _carte.attaque(A.src,A.dest);
                 default:
                     std::cerr<<"mauvais type d'action"<<std::endl;
                     break;
@@ -33,17 +30,14 @@ Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(Carte(pere->getC
 }
 
 int Noeud::roll_out(){
-    Carte simulation( _carte);
+    CarteStoch simulation( _carte);
     while(simulation.fini()==-1){
         std::vector<Action> act = randomAction(_carte);
         for (auto A : _Actions) {
-            coordonnees dest;
-            dest.first = A.dest/simulation.getLongueur();
-            dest.second = A.dest%simulation.getLongueur();
             switch(A.faire){
                 case typeAction::DEPLACER:
 
-                    simulation.getCase(A.src).getPiece()->deplacement(dest);
+                    simulation.deplacement(A.src,A.dest);
                     break;
                 case typeAction::ATTAQUER:
                     //simulation.getCase(A.src).getPiece()->attaque(dest)
@@ -86,7 +80,7 @@ int Noeud::getNbrR() { return _nbr_recherche;}
 
 int Noeud::getNbrV() { return _nbr_valeur;}
 
-Carte Noeud::getCarte() {return _carte;}
+CarteStoch Noeud::getCarte() {return _carte;}
 
 void Noeud::setNbrV(int v) {_nbr_valeur = v;}
 
@@ -97,24 +91,21 @@ void Noeud::setCarte(Carte c) {_carte = c;}
 void Noeud::save(){;}
 
 void Noeud::load(){
-    std::string cheminBase = __FILE__;
-    cheminBase = cheminBase.substr(3);
-    std::cout<<cheminBase<<std::endl;
-    cheminBase = cheminBase.substr(0,cheminBase.find_first_of("/"));
-    std::string chemin = "../"+cheminBase+"/Ressources/Stochastique/Carte";
+    std::string cheminBase = "../../ProjetL3/FullMetalWar";
+    std::string chemin = cheminBase+"/Ressources/Stochastique/Carte";
     switch(_carte.getType()){
-    case TypeCarte::PLAINES:
-        chemin += "P_";
-        break;
-    case TypeCarte::MERS:
-        chemin += "M_";
-        break;
-    case TypeCarte::STOCHASTIQUE:
-        chemin += "S_";
-        break;
-    default:
-        chemin += "_";
-        break;
+        case 1:
+            chemin += "P_";
+            break;
+        case 2:
+            chemin += "M_";
+            break;
+        case 3:
+            chemin += "S_";
+            break;
+        default:
+            chemin += "_";
+            break;
 
         ;}
     int largeur = _carte.getLargeur();

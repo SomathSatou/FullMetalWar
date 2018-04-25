@@ -1,6 +1,7 @@
 #ifndef CARETESTOCH
 #define CARETESTOCH
 #include "vector"
+#include "Moteur/Jeu/Carte.h"
 
 struct Unite{
     int type;
@@ -10,22 +11,24 @@ struct Unite{
 };
 
 struct Case{
-    int type;
+    int type;  // 1 plaines , 2 mers , 3 montagnes , 4 marais, 5recifs
     Unite piece;
 };
 
-class Carte;
 
 class CarteStoch {
     public :
-        void deplacer(int dest);
-        void attaquer(int dest);
+        CarteStoch(Carte const &c){setPlateau(c);}
+        void deplacement(int src,int dest);
+        void attaque(int src,int dest);
+        bool fini(){}
 
         //acesseur
         std::vector<Case> getPlateau();
         int getLongueur() const;
         int getLargeur() const;
         int getTaille() const;
+        Case getCase(int x) const{}
 
         //setters
         void setPlateau(Carte c);
@@ -33,11 +36,15 @@ class CarteStoch {
         void setLargeur(int largeur);
         void setTaille(int taille);
 
+        int getType() const;
+        void setType(int type);
+
 private :
         std::vector<Case> _plateau;
         int _longueur;
         int _largeur;
         int _taille;
+        int _type; // 1 plaines, 2 mers, 3 stochastique, autre random
 };
 
 #endif // CARETESTOCH
