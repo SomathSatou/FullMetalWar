@@ -1,0 +1,8 @@
+#pragma once
+#ifndef DEFINECLASS_H
+#define DEFINECLASS_H
+enum class Couleur { ROUGE, BLEU, VERT, JAUNE, NEUTRE, BLANC, NOIR, ORANGE, MAUVE, GRIS, CYAN};
+
+enum TypeCarte {RANDOM, PLAINES, MERS, STOCHASTIQUE};
+#endif // DEFINECLASS_H
+
