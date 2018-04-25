@@ -48,7 +48,6 @@ void CarteStoch::setPlateau(Carte c){
                    std::cerr<<"mauvais type de case stocha"<<std::endl;
                    break;
            }
-           std::cout<<oldCase.getPiece()->infoPiece()<<std::endl;
            if (dynamic_cast<Char *>(oldCase.getPiece())){
                std::cout<<"un char"<<std::endl;
                  Unite temp;
