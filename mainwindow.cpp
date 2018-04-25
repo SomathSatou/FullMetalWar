@@ -5,7 +5,6 @@ using namespace std;
 MainWindow::MainWindow() :
     QMainWindow()
 {
-    std::cout<<"thomas a eu tord si tu vois ça"<<std::endl;
     setMenuPrincipal();
 }
 
