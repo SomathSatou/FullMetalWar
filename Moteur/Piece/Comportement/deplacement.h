@@ -4,6 +4,8 @@
 
 using coordonnees = std::pair<int,int>;
 
+
+
 class IDeplacement{
 public:
     virtual std::vector<coordonnees> voisin(Carte * carte, coordonnees source)=0;

@@ -16,7 +16,7 @@ public:
 
     bool maj_nouveau_tour() override{
         m_munition=1;
-        return maj_nouveau_tour();
+        return Piece::maj_nouveau_tour();
     }
 
     bool attaque(const coordonnees & ennemi) override;

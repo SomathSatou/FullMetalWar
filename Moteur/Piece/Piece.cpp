@@ -26,7 +26,9 @@ Piece::Piece(coordonnees coor, Couleur color, int pointDeVieMax, Joueur *proprie
 Piece::Piece(const Piece &p)
     : m_coordonnee(p.m_coordonnee),
       m_color(p.m_color),
-      m_pointDeVie(p.m_pointDeVie){}
+      m_pointDeVie(p.m_pointDeVie),
+      m_pointDeVieMax(p.m_pointDeVieMax),
+      m_proprietaire(p.m_proprietaire){}
 
 Piece::~Piece(){
     m_proprietaire->getCarte()->getCase(m_coordonnee.first,m_coordonnee.second).detruitPiece();
@@ -93,10 +95,12 @@ std::vector<triplet> Piece::cases_a_portee(int portee){
 void Piece::setCoordonnee(const coordonnees &c) {
     if(m_coordonnee!= coordonnees(-1,-1))
         m_proprietaire->getCarte()->getCase(m_coordonnee.first,m_coordonnee.second).detruitPiece();
-    m_coordonnee.first = c.first;
-    m_coordonnee.second = c.second;
-    m_proprietaire->getCarte()->getCase(m_coordonnee.first,m_coordonnee.second).nouvellePiece(this);
 
+    if(c!=coordonnees(-1,-1)){
+        m_coordonnee.first = c.first;
+        m_coordonnee.second = c.second;
+        m_proprietaire->getCarte()->getCase(m_coordonnee.first,m_coordonnee.second).nouvellePiece(this);
+    }
 }
 
 void Piece::setPointDeVie(const int pointDeVie){ m_pointDeVie = pointDeVie; }
