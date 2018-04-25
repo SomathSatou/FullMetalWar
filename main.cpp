@@ -8,21 +8,21 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 
-//    QApplication a(argc, argv);
+    QApplication a(argc, argv);
 
-//    MainWindow w;
-//    w.showFullScreen();
-//    //w.showMaximized();
+    MainWindow w;
+    //w.showFullScreen();
+    w.showMaximized();
 
-//    return a.exec();
+    return a.exec();
 
     // test arbre
-       int la = 5;
-       int lo = 5;
-       Carte Test(lo,la,TypeCarte::PLAINES);
-       Noeud tmp(Test);
+//       int la = 5;
+//       int lo = 5;
+//       Carte Test(lo,la,TypeCarte::PLAINES);
+//       Noeud tmp(Test);
 
-       return 0;
+//       return 0;
 
 
     /*

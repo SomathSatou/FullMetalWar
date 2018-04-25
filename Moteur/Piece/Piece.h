@@ -81,6 +81,7 @@ public:
 
     void setTypeDeplacement(IDeplacement * typeDepla);
     void setTypeAttaque(IAttaque * typeAtk);
+    void setJoueur(Joueur *proprietaire);
 
     Joueur * getJoueur() const;
 
@@ -90,17 +91,14 @@ public:
 
     coups actionsPossibles();
 
-    bool prendreDegats(int d){
-        m_pointDeVie-=d;
-        return m_pointDeVie<=0;
-    }
+    bool prendreDegats(int d);
+
 
     std::vector<triplet> pathfinding_dijkstra_manhattan(const coordonnees & source , const coordonnees & destination) const;
     int manhattan(const coordonnees & source , const coordonnees & destination) const;
 
     coups voisins();
 
-    void setJoueur(Joueur *proprietaire);
 
 private:
     coordonnees m_coordonnee;
