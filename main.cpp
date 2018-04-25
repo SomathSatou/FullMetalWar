@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 //    //w.showMaximized();
 
 //    return a.exec();
-std::cout<<"test git1"<<std::endl;
+
     // test arbre
        int la = 5;
        int lo = 5;
