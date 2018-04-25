@@ -93,6 +93,7 @@ public:
 
     bool prendreDegats(int d);
 
+    virtual bool maj_nouveau_tour();
 
     std::vector<triplet> pathfinding_dijkstra_manhattan(const coordonnees & source , const coordonnees & destination) const;
     int manhattan(const coordonnees & source , const coordonnees & destination) const;

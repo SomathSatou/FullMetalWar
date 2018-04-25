@@ -9,7 +9,6 @@ class joueurStochastique : public Joueur
 public:
     joueurStochastique();
 
-    std::vector<Action> randomAction(Carte & c);
 
 private:
     Noeud * Racine;

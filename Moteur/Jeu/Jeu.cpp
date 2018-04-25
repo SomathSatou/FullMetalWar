@@ -202,4 +202,8 @@ void Jeu::finDeTourJoueur() {
     }
     else
         m_joueurCourant ++;
+
+    for(auto & j : m_joueurs){
+        j->maj_nouveau_tour();
+    }
 }

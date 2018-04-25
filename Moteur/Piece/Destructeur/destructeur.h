@@ -13,6 +13,12 @@ public:
     int getCurrentMunition() const;
     int getMunition() const;
 
+
+    bool maj_nouveau_tour() override{
+        m_munition=1;
+        return maj_nouveau_tour();
+    }
+
     bool attaque(const coordonnees & ennemi) override;
 
 private:

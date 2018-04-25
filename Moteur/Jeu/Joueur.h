@@ -28,6 +28,13 @@ public:
 
     coups actionPossibles();
 
+    void maj_nouveau_tour(){
+        m_PACourant=m_PAMax;
+        for(std::vector<Piece *>::const_iterator i = m_pieces.begin(); i != m_pieces.end(); i++)
+            if(!(*i)->maj_nouveau_tour())
+                m_pieces.erase(i);
+    }
+
     //Methode pour les actions du jeu
     void ramasserMinerai();
     void ajouterPiece(Piece *p);

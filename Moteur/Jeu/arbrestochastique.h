@@ -1,9 +1,11 @@
 #pragma once
+#pragma once
 
 #include <fstream>
 #include <string>
 #include <utility>
 #include "Moteur/Jeu/Carte.h"
+#include "Moteur/Jeu/caretestoch.h"
 
 enum class typeAction {DEPLACER, ATTAQUER};
 
@@ -12,6 +14,7 @@ struct Action{
     int src;
     int dest;
     };
+
 
 std::vector<Action> randomAction(Carte & c);
 
@@ -30,7 +33,7 @@ class Noeud {
         //acceseur
         int getNbrR();
         int getNbrV();
-        Carte getCarte();
+        CarteStoch getCarte();
 
         void setNbrV(int v);
         void setNbrR(int r);
@@ -45,7 +48,7 @@ class Noeud {
         std::vector<Action> trad(std::ifstream &f);
 
     private:
-        Carte _carte;
+        CarteStoch _carte;
         int _nbr_recherche;
         int _nbr_valeur;
         std::vector<Noeud *> _fils;

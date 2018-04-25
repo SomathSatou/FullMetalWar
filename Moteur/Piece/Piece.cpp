@@ -169,6 +169,17 @@ coups Piece::actionsPossibles(){
 
 }
 
+bool Piece::prendreDegats(int d){
+    m_pointDeVie-=d;
+    return m_pointDeVie<=0;
+}
+
+bool Piece::maj_nouveau_tour(){
+    if(m_pointDeVie<=0)
+        return false;
+    return true;
+}
+
 std::vector<triplet> Piece::pathfinding_dijkstra_manhattan(const coordonnees &source, const coordonnees &destination) const{
     std::vector<triplet> path;
     std::vector<triplet> file;

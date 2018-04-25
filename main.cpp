@@ -24,6 +24,13 @@ int main(int argc, char *argv[])
 
 //       return 0;
 
+       int la = 5;
+       int lo = 5;
+       Carte Test(lo,la,TypeCarte::PLAINES);
+       Noeud tmp(Test);
+       std::cout<<tmp.getCarte().getCase(0).type<<std::endl;
+       std::cout<<tmp.getCarte().getCase(24).type<<std::endl;
+       return 0;
 
     /*
     Joueur * j1 = new Joueur("J1",Couleur::BLEU);
