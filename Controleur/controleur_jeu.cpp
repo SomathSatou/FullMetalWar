@@ -220,6 +220,23 @@ void Controleur_Jeu::getClickFinDeTour() {
     } // END ELSE
 
 
+    if(dynamic_cast<joueurStochastique *>(_moteur->getJoueurCourrantPtr())){
+        std::cout << "\nLe joueur stochastique joue\n";
+        for(const auto & a : _moteur->getJoueurCourrantPtr()->joue()){
+            int xs = a.src%_moteur->getCarte().getLongueur();
+            int ys = (a.src-xs) / _moteur->getCarte().getLongueur();
+            getClickModelisation(xs,ys);
+            usleep(100000);
+            int xd = a.dest%_moteur->getCarte().getLongueur();
+            int yd = (a.dest-xd) / _moteur->getCarte().getLongueur();
+            std::cout << "\nOrdre de " << xs << "-" << ys << " a " << xd << "-" << yd << "\n";
+            getPositionDeplacement(xd,yd);
+
+            usleep(100000);
+            //ordre(coordonnees(xs,ys),coordonnees(xd,yd));
+        }
+    }
+
 } // END
 
 void Controleur_Jeu::initialisation() {

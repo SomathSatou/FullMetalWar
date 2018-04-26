@@ -71,7 +71,7 @@ int Joueur::getScore() const{ return m_score; }
 
 Couleur Joueur::getCouleur() const{ return m_couleur; }
 
-const std::__cxx11::string &Joueur::getPseudonyme() const { return m_pseudonyme; }
+const std::string &Joueur::getPseudonyme() const { return m_pseudonyme; }
 
 std::vector<Piece *> Joueur::getArmee(){
     return m_pieces;

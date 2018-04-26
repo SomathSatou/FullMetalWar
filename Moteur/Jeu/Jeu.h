@@ -53,7 +53,6 @@ public :
 
     void checkJoueurs();
 
-    void listeOrdre(std::vector<Action> actions);
 
     void finDeTourJoueur();
 

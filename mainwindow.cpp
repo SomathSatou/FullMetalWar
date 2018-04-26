@@ -46,7 +46,7 @@ void MainWindow::setA() {
 void MainWindow::setS() {
     std::vector<Joueur *> J;
     J.push_back(new Joueur("Titi",Couleur::BLEU));
-    J.push_back(new joueurStochastique("Toto",Couleur::ORANGE));
+    J.push_back(new joueurStochastique("Toto",Couleur::ROUGE));
     std::vector<std::pair<typePiece,int>> P;
     P.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
     Controleur_Jeu* _controleur_jeu = new Controleur_Jeu(J,5,5,TypeCarte::PLAINES,false,P,this);

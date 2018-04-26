@@ -1,6 +1,7 @@
 #ifndef CONTROLEUR_JEU_H
 #define CONTROLEUR_JEU_H
 
+#include <unistd.h>
 #include <QObject>
 #include <Moteur/Jeu/allmotor.h>
 #include <Vue/Vue_jeu/vue_jeu.h>

@@ -186,16 +186,6 @@ void Jeu::checkJoueurs(){
         j->checkPieces();
 }
 
-void Jeu::listeOrdre(std::vector<Action> actions){
-    for(const auto & a : actions){
-        int xs = a.src%m_carte.getLongueur();
-        int ys = (a.src-xs) / m_carte.getLongueur();
-        int xd = a.dest%m_carte.getLongueur();
-        int yd = (a.dest-xd) / m_carte.getLongueur();
-        std::cout << "\nOrdre de " << xs << "-" << ys << " a " << xd << "-" << yd << "\n";
-        ordre(coordonnees(xs,ys),coordonnees(xd,yd));
-    }
-}
 
 
 
@@ -211,11 +201,6 @@ void Jeu::finDeTourJoueur() {
 
     for(auto & j : m_joueurs){
         j->maj_nouveau_tour();
-    }
-
-    if(dynamic_cast<joueurStochastique *>(m_joueurs[m_joueurCourant])){
-        std::cout << "\nLe joueur stochastique joue\n";
-        listeOrdre(m_joueurs[m_joueurCourant]->joue());
     }
 
 }
