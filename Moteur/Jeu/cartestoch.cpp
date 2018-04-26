@@ -30,6 +30,7 @@ void CarteStoch::setPlateau(Carte c){
            Case newCase;
            switch(oldCase.getType()){
                case TYPECASE::MONTAGNE:
+
                    newCase.type = 3;
                    break;
                case TYPECASE::PLAINE:
@@ -45,17 +46,26 @@ void CarteStoch::setPlateau(Carte c){
                    newCase.type = 5;
                    break;
                default:
+                   newCase.type = 0;
                    std::cerr<<"mauvais type de case stocha"<<std::endl;
                    break;
            }
+           Unite temp;
            if (dynamic_cast<Char *>(oldCase.getPiece())){
                std::cout<<"un char"<<std::endl;
-                 Unite temp;
                  temp.mun = 1;
-                 temp.proprio = 0; // a modifier
+                 if(oldCase.getPiece()->getCouleur() == Couleur::BLEU){temp.proprio =0;}
+                 else{temp.proprio = 1;}
                  temp.pv = 5;
                  temp.type = 1; // 1 pour char
                  }
+
+           else{                 temp.mun = 1;
+               temp.proprio = 0; // a modifier
+               temp.pv = 5;
+               temp.type = 0; // 1 pour char
+            }
+                            newCase.piece = temp;
            //rajouter des dynamic cast pour avoir plus de piece
            _plateau.push_back(newCase);
       }
@@ -87,3 +97,41 @@ void CarteStoch::setType(int type)
 {
 _type = type;
 }
+
+void CarteStoch::Afficher(){
+    for(int i = 0;i<_largeur;i++){
+        if(i%2==0){
+            for (int j = 0;j<_longueur;j++)
+                {std::cout<< "/\\";}
+            std::cout<<std::endl<<"|";
+            for (int j = 0;j<_longueur;j++)
+                {
+                if (_plateau[_longueur*j+i].piece.type == 1) {
+                    if(_plateau[_longueur*j+i].piece.proprio == 0){std::cout<<"\033[1;31mC\033[0m|";}
+
+                    else{std::cout<<"\033[1;34mC\033[0m|";}}
+                else {std::cout<<" |";}
+                }
+            std::cout<<std::endl;
+            }
+        else
+            {
+            std::cout<<"\\";
+            for (int j = 0;j<_longueur;j++)
+                    {std::cout<< "/\\";}
+                std::cout<<std::endl<<" |";
+                for (int j = 0;j<_longueur;j++)
+                    {
+                    if (_plateau[_longueur*j+i].piece.type == 1) {
+                        if(_plateau[_longueur*j+i].piece.proprio == 0){std::cout<<"\033[1;31mC\033[0m|";}
+
+                        else{std::cout<<"\033[1;34mC\033[0m|";}}
+                    else {std::cout<<" |";}
+                    }
+                std::cout<<std::endl;
+                }
+            }
+         for (int j = 0;j<_longueur;j++)
+            {std::cout<< "\\/";}
+         std::cout<<std::endl;
+    }

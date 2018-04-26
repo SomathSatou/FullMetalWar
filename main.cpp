@@ -18,12 +18,17 @@ int main(int argc, char *argv[])
 
     // test arbre
 
-//       int la = 5;
-//       int lo = 5;
-//       Carte Test(lo,la,TypeCarte::PLAINES);
-//       Noeud tmp(Test);
-//       for (int i =0;i<tmp.getCarte().getPlateau().size();i++)
-//            {std::cout<<tmp.getCarte().getCase(i).type<< "pour la case" << i<<std::endl;}
+//    int la = 5;
+//    int lo = 5;
+//    std::vector<Joueur *> testJ;
+//    testJ.push_back(new Joueur("Titi",Couleur::BLEU));
+//    testJ.push_back(new Joueur("Toto",Couleur::ROUGE));
+//    std::vector<std::pair<typePiece,int>> testP;
+//    testP.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
+//    Jeu Test(testJ,testP,TypeCarte::PLAINES,false,lo,la);
+//    Noeud tmp(Test.getCarte());
+//    tmp.getCarte().Afficher();
+
 
 //       return 0;
 

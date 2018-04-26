@@ -22,13 +22,17 @@ class CarteStoch {
         void deplacement(int src,int dest);
         void attaque(int src,int dest);
         bool fini(){}
+        void finTour(){for(int i = 0;i<_taille;i++){
+                      _plateau[i].piece.mun = 1;}
+                      }
+        void Afficher();
 
         //acesseur
         std::vector<Case> getPlateau();
         int getLongueur() const;
         int getLargeur() const;
         int getTaille() const;
-        Case getCase(int x) const{}
+        Case getCase(int x) const{return _plateau[x];}
 
         //setters
         void setPlateau(Carte c);
