@@ -6,13 +6,6 @@
 #include "Moteur/Jeu/Carte.h"
 #include "Moteur/Jeu/caretestoch.h"
 
-enum class typeAction {DEPLACER, ATTAQUER};
-
-struct Action{
-    typeAction faire;
-    int src;
-    int dest;
-    };
 
 
 std::vector<Action> randomAction(Carte & c);

@@ -84,7 +84,7 @@ Controleur_Jeu::Controleur_Jeu(const std::vector<Joueur*>  listeJoueurs,int long
     std::vector<std::pair<typePiece,int>> listePieces;
 
     // liste des pieces a ajouter ************************************************************
-  /*  listePieces.push_back(QuantPiece(1,TOURELLE));
+    /*  listePieces.push_back(QuantPiece(1,TOURELLE));
      listePieces.push_back(QuantPiece(1,PONDEUSE));
     listePieces.push_back(QuantPiece(1,TOURELLE));*/
 
@@ -198,8 +198,8 @@ void Controleur_Jeu::getClickFinDeTour() {
     _moteur->finDeTourJoueur();
 
     emit sendPAOnglet(_moteur->getJoueur(_moteur->getJoueurCourrant())->getNombrePACourant(),
-                                         _moteur->getJoueur(_moteur->getJoueurCourrant())->getNombrePAMax(),
-                                         _moteur->getJoueurCourrant());
+                      _moteur->getJoueur(_moteur->getJoueurCourrant())->getNombrePAMax(),
+                      _moteur->getJoueurCourrant());
 
     static_cast<QWidget*>(_parent)->setFocus(); // Permet de redonner le focus à la MainWindow afin d'écouter les entrées clavier
 
@@ -218,6 +218,8 @@ void Controleur_Jeu::getClickFinDeTour() {
 
         emit putScoreScreen(gagnant->getPseudonyme().c_str(),gagnant->getScore());
     } // END ELSE
+
+
 } // END
 
 void Controleur_Jeu::initialisation() {
@@ -264,12 +266,12 @@ void Controleur_Jeu::getClickModelisation(int x, int y) {
                 emit sendInformationDestructeur(nom_piece,destr->getPointDeVie(),destr->getPointDeVieMax(),proprio,destr->getCurrentMunition(),destr->getMunition());
             } // END IF
             else {
-                    emit sendInformationNeutre(nom_piece,p->getPointDeVie(),p->getPointDeVieMax(),proprio);
+                emit sendInformationNeutre(nom_piece,p->getPointDeVie(),p->getPointDeVieMax(),proprio);
             } // END ELSE
 
         } // END ELSE
     }
-   else {
+    else {
         emit sendInformationVide();
         emit sendModelisationUnite("VIDE",Couleur::NEUTRE);
     }
@@ -294,8 +296,8 @@ void Controleur_Jeu::getPositionDeplacement(int x, int y) {
         getCase(longueur * _positionCurrentCase.y() + _positionCurrentCase.x());
 
         emit sendPAOnglet(_moteur->getJoueur(_moteur->getJoueurCourrant())->getNombrePACourant(),
-                                             _moteur->getJoueur(_moteur->getJoueurCourrant())->getNombrePAMax(),
-                                             _moteur->getJoueurCourrant());
+                          _moteur->getJoueur(_moteur->getJoueurCourrant())->getNombrePAMax(),
+                          _moteur->getJoueurCourrant());
 
         _positionCurrentCase.setX(x);
         _positionCurrentCase.setY(y);

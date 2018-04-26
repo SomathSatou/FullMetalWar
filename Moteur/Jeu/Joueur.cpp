@@ -99,7 +99,10 @@ coups Joueur::actionPossibles(){
     return actions;
 }
 
-std::vector<Action> Joueur::joue(){}
+std::vector<Action> Joueur::joue(){
+    std::vector<Action> a;
+    return a;
+}
 
 int Joueur::getNombrePACourant() const{return m_PACourant;}
 

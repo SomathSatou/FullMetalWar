@@ -23,6 +23,7 @@ public:
     void getCase(int i); // Récupère la case voulue dans le moteur pour l'envoyer à la vue via les signaux sendCaseMiniMap/sendCaseModelisation
     void getNombrePACourant(int);
 
+
 private:
     QObject* _parent;
     Jeu* _moteur;

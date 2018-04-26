@@ -17,7 +17,7 @@ std::vector<Action> joueurStochastique::joue(){
     a.dest=20;
     actions.push_back(a);
     a.src=20;
-    a.dest=19;
+    a.dest=21;
     actions.push_back(a);
     return actions;
 }

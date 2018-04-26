@@ -157,6 +157,8 @@ Jeu::~Jeu(){ m_joueurs.clear();}
 Carte &Jeu::getCarte() { return m_carte; }
 
 int Jeu::getJoueurCourrant() const { return m_joueurCourant; }
+Joueur * Jeu::getJoueurCourrantPtr() const { return m_joueurs[m_joueurCourant]; }
+
 
 int Jeu::getTourCourrant() const{
     if(m_tourCourrant < m_tourMax)
@@ -182,6 +184,17 @@ std::string Jeu::toString() const{
 void Jeu::checkJoueurs(){
     for(auto & j : m_joueurs)
         j->checkPieces();
+}
+
+void Jeu::listeOrdre(std::vector<Action> actions){
+    for(const auto & a : actions){
+        int xs = a.src%m_carte.getLongueur();
+        int ys = (a.src-xs) / m_carte.getLongueur();
+        int xd = a.dest%m_carte.getLongueur();
+        int yd = (a.dest-xd) / m_carte.getLongueur();
+        std::cout << "\nOrdre de " << xs << "-" << ys << " a " << xd << "-" << yd << "\n";
+        ordre(coordonnees(xs,ys),coordonnees(xd,yd));
+    }
 }
 
 

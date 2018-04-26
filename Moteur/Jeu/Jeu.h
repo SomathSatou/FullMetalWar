@@ -42,6 +42,7 @@ public :
     //    const std::vector<Joueur>& getListeJoueurs() const { return m_joueurs; }
     //    const Joueur& getJoueur(int index) const { return m_joueurs[index]; }
     int getJoueurCourrant() const;
+    Joueur * getJoueurCourrantPtr() const;
     int getTourCourrant() const;
 
     std::vector<Joueur *> getListeJoueurs();
@@ -52,15 +53,7 @@ public :
 
     void checkJoueurs();
 
-    void listeOrdre(std::vector<Action> actions){
-        for(const auto & a : actions){
-            int xs = a.src%m_carte.getLongueur();
-            int ys = (a.src-xs) / m_carte.getLongueur();
-            int xd = a.dest%m_carte.getLongueur();
-            int yd = (a.dest-xd) / m_carte.getLongueur();
-            ordre(coordonnees(xs,ys),coordonnees(xd,yd));
-        }
-    }
+    void listeOrdre(std::vector<Action> actions);
 
     void finDeTourJoueur();
 

@@ -6,7 +6,7 @@
 
 #include "Moteur/Piece/allpieces.h"
 class jeu;
-struct Action;
+
 class Joueur {
 
     /*

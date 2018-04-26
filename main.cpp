@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     //w.showFullScreen();
     w.showMaximized();
 
-//    return a.exec();
+    return a.exec();
 
     // test arbre
 
