@@ -7,7 +7,8 @@
 class joueurStochastique : public Joueur
 {
 public:
-    joueurStochastique();
+    joueurStochastique(const std::string& pseudonyme, Couleur couleur)
+        :Joueur(pseudonyme,couleur){}
 
     std::vector<Action> joue() override;
 
