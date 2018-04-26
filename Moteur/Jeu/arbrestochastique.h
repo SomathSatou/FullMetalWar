@@ -25,7 +25,7 @@ class Noeud {
         //acceseur
         int getNbrR();
         int getNbrV();
-        CarteStoch getCarte();
+        CarteStoch getCarte() const;
         std::vector<Noeud *> getFils() {return _fils;}
 
         void setNbrV(int v);

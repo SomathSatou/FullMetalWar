@@ -7,7 +7,7 @@ Noeud::Noeud(const Carte & c) : _carte(c),_nbr_recherche(0),_nbr_valeur(0),_fils
     load();
 }
 
-Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(pere->getCarte()),_nbr_recherche(0),_nbr_valeur(0),_fils(NULL),_Actions(Actions),_pere(pere) {
+Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(pere->getCarte()),_nbr_recherche(0),_nbr_valeur(0),_fils(0),_Actions(Actions),_pere(pere) {
     for (auto A : _Actions) {
             switch(A.faire){
                 case typeAction::DEPLACER:
@@ -20,7 +20,7 @@ Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(pere->getCarte()
                     break;
                 }
     }
-    if (_carte.fini()!=-1){
+    if (_carte.fini()==false){
         update(_carte.fini(),this);
     }
     else {
@@ -31,7 +31,7 @@ Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(pere->getCarte()
 
 int Noeud::roll_out(){
     CarteStoch simulation( _carte);
-    while(simulation.fini()==-1){
+    while(simulation.fini()==false){
         std::vector<Action> act = randomAction(_carte);
         for (auto A : _Actions) {
             switch(A.faire){
@@ -80,7 +80,7 @@ int Noeud::getNbrR() { return _nbr_recherche;}
 
 int Noeud::getNbrV() { return _nbr_valeur;}
 
-CarteStoch Noeud::getCarte() {return _carte;}
+CarteStoch Noeud::getCarte() const {return _carte;}
 
 void Noeud::setNbrV(int v) {_nbr_valeur = v;}
 
