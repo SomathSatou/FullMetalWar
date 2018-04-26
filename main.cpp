@@ -8,29 +8,24 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 
-    QApplication a(argc, argv);
+//    QApplication a(argc, argv);
 
-    MainWindow w;
-    //w.showFullScreen();
-    w.showMaximized();
+//    MainWindow w;
+//    //w.showFullScreen();
+//    w.showMaximized();
 
-    return a.exec();
+//    return a.exec();
 
     // test arbre
-//       int la = 5;
-//       int lo = 5;
-//       Carte Test(lo,la,TypeCarte::PLAINES);
-//       Noeud tmp(Test);
 
-//       return 0;
+       int la = 5;
+       int lo = 5;
+       Carte Test(lo,la,TypeCarte::PLAINES);
+       Noeud tmp(Test);
+       for (int i =0;i<tmp.getCarte().getPlateau().size();i++)
+            {std::cout<<tmp.getCarte().getCase(i).type<< "pour la case" << i<<std::endl;}
 
-//       int la = 5;
-//       int lo = 5;
-//       Carte Test(lo,la,TypeCarte::PLAINES);
-//       Noeud tmp(Test);
-//       std::cout<<tmp.getCarte().getCase(0).type<<std::endl;
-//       std::cout<<tmp.getCarte().getCase(24).type<<std::endl;
-//       return 0;
+       return 0;
 
     /*
     Joueur * j1 = new Joueur("J1",Couleur::BLEU);
