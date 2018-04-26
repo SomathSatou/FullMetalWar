@@ -99,6 +99,8 @@ coups Joueur::actionPossibles(){
     return actions;
 }
 
+std::vector<Action> Joueur::joue(){}
+
 int Joueur::getNombrePACourant() const{return m_PACourant;}
 
 int Joueur::getNombrePAMax()const {return m_PAMax;}

@@ -196,4 +196,10 @@ void Jeu::finDeTourJoueur() {
     for(auto & j : m_joueurs){
         j->maj_nouveau_tour();
     }
+
+    if(dynamic_cast<joueurStochastique *>(m_joueurs[m_joueurCourant])){
+        std::cout << "\nLe joueur stochastique joue\n";
+        //listeOrdre(m_joueurs[m_joueurCourant]->joue());
+    }
+
 }

@@ -11,6 +11,7 @@
 #include <memory>
 
 #include "Joueur.h"
+#include "joueurstochastique.h"
 #include "Carte.h"
 #include "Moteur/Piece/allpieces.h"
 

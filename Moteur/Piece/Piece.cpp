@@ -154,21 +154,21 @@ coups Piece::actionsPossibles(){
     coups actions(voisins());
     coups ennemis(_attaque->aPortee(m_proprietaire->getCarte(),m_coordonnee,m_color));
     actions.insert(actions.end(),ennemis.begin(),ennemis.end());
-    std::cout << "\nVoici la liste de mes actions possibles : ";
-    for(auto a : actions){
-        std::cout << "\n\tma position : "
-                  << a.source.first
-                  << "-"
-                  << a.source.second
-                  << "\tmon objectif : "
-                  << a.destination.first
-                  << "-"
-                  << a.destination.second
-                  << "\tle cout : "
-                  << a.cout;
+    //    std::cout << "\nVoici la liste de mes actions possibles : ";
+    //    for(auto a : actions){
+    //        std::cout << "\n\tma position : "
+    //                  << a.source.first
+    //                  << "-"
+    //                  << a.source.second
+    //                  << "\tmon objectif : "
+    //                  << a.destination.first
+    //                  << "-"
+    //                  << a.destination.second
+    //                  << "\tle cout : "
+    //                  << a.cout;
 
-        std::cout << std::flush;
-    }
+    //        std::cout << std::flush;
+    //    }
     return actions;
 
 }

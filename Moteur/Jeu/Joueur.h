@@ -6,7 +6,7 @@
 
 #include "Moteur/Piece/allpieces.h"
 class jeu;
-
+struct Action;
 class Joueur {
 
     /*
@@ -27,6 +27,9 @@ public:
     Piece * appartient(coordonnees c);
 
     coups actionPossibles();
+
+
+    virtual std::vector<Action> joue();
 
     void maj_nouveau_tour(){
         m_PACourant=m_PAMax;

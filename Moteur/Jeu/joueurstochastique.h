@@ -9,6 +9,7 @@ class joueurStochastique : public Joueur
 public:
     joueurStochastique();
 
+    std::vector<Action> joue() override;
 
 private:
     Noeud * Racine;
