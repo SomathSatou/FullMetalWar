@@ -47,12 +47,15 @@ public:
     bool retirePA(int PA);
 
     void checkPieces(){
+        std::vector<Piece *>::iterator a_supprimer(m_pieces.end());
         for(std::vector<Piece *>::iterator i = m_pieces.begin(); i != m_pieces.end(); i++)
             if((*i)->getPointDeVie()<=0){
                 (*i)->setCoordonnee(coordonnees(-1,-1));
                 std::cout << "\ndestruction piece\n";
-                m_pieces.erase(i);
+                a_supprimer=i;
             }
+        if(a_supprimer!=m_pieces.end())
+            m_pieces.erase(a_supprimer);
     }
 
     void setPseudonyme(const std::string& pseudo);

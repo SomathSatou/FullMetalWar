@@ -49,6 +49,8 @@ public :
     // Méthodes d'affichage
     std::string toString() const;
 
+    void checkJoueurs();
+
     void finDeTourJoueur();
 
 private :

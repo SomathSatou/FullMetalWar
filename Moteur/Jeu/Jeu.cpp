@@ -133,6 +133,7 @@ bool Jeu::ordre(const coordonnees &source, const coordonnees &objectif){
 
                     if(m_joueurs[m_joueurCourant]->retirePA(cout)){
                         p1->setCoordonnee(objectif);
+                        checkJoueurs();
                         return true;
                     }
                 }else
@@ -140,9 +141,10 @@ bool Jeu::ordre(const coordonnees &source, const coordonnees &objectif){
 
             }else{//si p2 est une piece
                 if(p2->getCouleur()!=p1->getCouleur()){
-                    if(m_joueurs[m_joueurCourant]->retirePA(1))
+                    if(m_joueurs[m_joueurCourant]->getPA()>0)
                         if(p1->attaque(objectif))
-                    std::cout << "coucoul'attaque'";
+                            m_joueurs[m_joueurCourant]->retirePA(1);
+                    checkJoueurs();
                 }
             }
         }
@@ -175,6 +177,11 @@ std::string Jeu::toString() const{
         oss<< j->toString();
     //oss << m_carte.toString() << std::endl;
     return oss.str();
+}
+
+void Jeu::checkJoueurs(){
+    for(auto & j : m_joueurs)
+        j->checkPieces();
 }
 
 void Jeu::finDeTourJoueur() {
