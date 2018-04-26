@@ -19,16 +19,25 @@ struct Case{
 class CarteStoch {
     public :
         CarteStoch(Carte const &c){setPlateau(c);}
+        CarteStoch(CarteStoch const &c):_longueur(c.getLongueur()),
+                                   _largeur(c.getLargeur()),
+                                   _taille(c.getTaille()),
+                                   _type(c.getType()){
+            for(auto Case : c.getPlateau()){
+                _plateau.push_back(Case);
+            }
+        }
+
         bool deplacement(int src,int dest);
         void attaque(int src,int dest);
-        bool fini(){}
+        bool fini(){return false;}
         void finTour(){for(int i = 0;i<_taille;i++){
                       _plateau[i].piece.mun = 1;}
                       }
         void Afficher();
 
         //acesseur
-        std::vector<Case> getPlateau();
+        std::vector<Case> getPlateau() const;
         int getLongueur() const;
         int getLargeur() const;
         int getTaille() const;

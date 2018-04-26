@@ -3,7 +3,7 @@
 #include "CaseMap.h"
 #include "Moteur/Piece/allpieces.h"
 
-std::vector<Case> CarteStoch::getPlateau(){return _plateau;}
+std::vector<Case> CarteStoch::getPlateau() const {return _plateau;}
 
 void CarteStoch::setPlateau(Carte c){
     int i=0;
