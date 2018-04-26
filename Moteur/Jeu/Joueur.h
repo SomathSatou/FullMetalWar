@@ -33,8 +33,8 @@ public:
         checkPieces();
         for(std::vector<Piece *>::iterator i = m_pieces.begin(); i != m_pieces.end(); i++)
             if(!(*i)->maj_nouveau_tour()){
-                m_pieces.erase(i);
-                std::cout << "\ndestruction piece\n";
+//                m_pieces.erase(i);
+                std::cout << "\nmaj\n";
             }
     }
 
@@ -50,6 +50,7 @@ public:
         for(std::vector<Piece *>::iterator i = m_pieces.begin(); i != m_pieces.end(); i++)
             if((*i)->getPointDeVie()<=0){
                 (*i)->setCoordonnee(coordonnees(-1,-1));
+                std::cout << "\ndestruction piece\n";
                 m_pieces.erase(i);
             }
     }

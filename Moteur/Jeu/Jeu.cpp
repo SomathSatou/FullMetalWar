@@ -92,23 +92,6 @@ Jeu::Jeu(std::vector<Joueur *> joueurs, std::vector<std::pair<typePiece,int>> &p
         }
     }
 
-
-
-
-    std::cout<< "\n\n\nCoucou debug\n\n\n";
-
-    for(auto tp : pieces){
-        if(typePiece::CHAR == tp.first)
-            std::cout<< "\n\tChar " << tp.second;
-        else
-            std::cout << "\n\tConnard";
-    }
-    std::cout << "\n";
-    for(auto & j : m_joueurs){
-        std::cout << j->toString();
-    }
-    std::cout<< "\n\n\nBye debug\n\n\n";
-
     //   //2
     //       for(std::vector<Joueur>::iterator i = m_joueurs.begin(); i != m_joueurs.end(); i++){
     //         if((*i).getCouleur() != NEUTRE){
