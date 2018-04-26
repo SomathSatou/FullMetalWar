@@ -8,29 +8,32 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 
-    QApplication a(argc, argv);
+//    QApplication a(argc, argv);
 
-    MainWindow w;
-    //w.showFullScreen();
-    w.showMaximized();
+//    MainWindow w;
+//    //w.showFullScreen();
+//    w.showMaximized();
 
-    return a.exec();
+//    return a.exec();
 
     // test arbre
 
-//    int la = 5;
-//    int lo = 5;
-//    std::vector<Joueur *> testJ;
-//    testJ.push_back(new Joueur("Titi",Couleur::BLEU));
-//    testJ.push_back(new Joueur("Toto",Couleur::ROUGE));
-//    std::vector<std::pair<typePiece,int>> testP;
-//    testP.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
-//    Jeu Test(testJ,testP,TypeCarte::PLAINES,false,lo,la);
-//    Noeud tmp(Test.getCarte());
-//    tmp.getCarte().Afficher();
+    int la = 5;
+    int lo = 5;
+    std::vector<Joueur *> testJ;
+    testJ.push_back(new Joueur("Titi",Couleur::BLEU));
+    testJ.push_back(new Joueur("Toto",Couleur::ROUGE));
+    std::vector<std::pair<typePiece,int>> testP;
+    testP.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
+    Jeu Test(testJ,testP,TypeCarte::PLAINES,false,lo,la);
+    Noeud tmp(Test.getCarte());
+    tmp.getCarte().Afficher();
+    tmp.getCarte().deplacement(0,1);
+    tmp.getCarte().Afficher();
+    tmp.getFils()[0]->getCarte().Afficher();
 
 
-//       return 0;
+     return 0;
 
     /*
     Joueur * j1 = new Joueur("J1",Couleur::BLEU);

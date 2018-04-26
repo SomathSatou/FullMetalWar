@@ -7,8 +7,8 @@ Noeud::Noeud(const Carte & c) : _carte(c),_nbr_recherche(0),_nbr_valeur(0),_fils
     load();
 }
 
-Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(pere->getCarte()),_nbr_recherche(0),_nbr_valeur(0),_fils(0),_Actions(Actions),_pere(pere) {
-        for (auto A : _Actions) {
+Noeud::Noeud(std::vector<Action> Actions, Noeud *pere) : _carte(pere->getCarte()),_nbr_recherche(0),_nbr_valeur(0),_fils(NULL),_Actions(Actions),_pere(pere) {
+    for (auto A : _Actions) {
             switch(A.faire){
                 case typeAction::DEPLACER:
                     _carte.deplacement(A.src,A.dest);

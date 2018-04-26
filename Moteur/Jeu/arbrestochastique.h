@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 
 #include <fstream>
 #include <string>
@@ -34,6 +33,7 @@ class Noeud {
         int getNbrR();
         int getNbrV();
         CarteStoch getCarte();
+        std::vector<Noeud *> getFils() {return _fils;}
 
         void setNbrV(int v);
         void setNbrR(int r);

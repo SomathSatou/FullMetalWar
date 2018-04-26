@@ -19,7 +19,7 @@ struct Case{
 class CarteStoch {
     public :
         CarteStoch(Carte const &c){setPlateau(c);}
-        void deplacement(int src,int dest);
+        bool deplacement(int src,int dest);
         void attaque(int src,int dest);
         bool fini(){}
         void finTour(){for(int i = 0;i<_taille;i++){
@@ -39,6 +39,8 @@ class CarteStoch {
         void setLongueur(int longueur);
         void setLargeur(int largeur);
         void setTaille(int taille);
+        void setPiece(Unite P,int dest){_plateau[dest].piece=P;}
+        void setPieceType(int type,int cible){_plateau[cible].piece.type = type;}
 
         int getType() const;
         void setType(int type);

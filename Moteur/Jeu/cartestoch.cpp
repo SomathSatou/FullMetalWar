@@ -37,10 +37,10 @@ void CarteStoch::setPlateau(Carte c){
                    newCase.type = 1;
                    break;
                case TYPECASE::MER:
-                   newCase.type = 2;
+                   newCase.type = 4;
                    break;
                case TYPECASE::MARAIS:
-                   newCase.type =4;
+                   newCase.type =2;
                    break;
                case TYPECASE::RECIF:
                    newCase.type = 5;
@@ -71,7 +71,34 @@ void CarteStoch::setPlateau(Carte c){
       }
 }
 
-void CarteStoch::deplacement(int src,int dest){}
+bool CarteStoch::deplacement(int src,int dest){
+    if(src>=0 && src<_taille){
+        std::cout<<"type :" <<getPlateau()[src].piece.type<< " src : "<< src << "dest : "<<dest <<std::endl;
+        switch(getPlateau()[src].piece.type){
+            case 0:
+                std::cerr<<"pas de piece"<<std::endl;
+                return false;
+                break;
+            case 1: //cas d'un tank
+                if (dest>=0 && dest<_taille){
+                     if (getPlateau()[dest].type<4){
+                         setPiece(getPlateau()[src].piece,dest);
+                         setPieceType(0,src);
+                         return true;}
+                     else{std::cerr<<"deplacement interdit"<<std::endl;
+                          return false;}
+                    }
+                else{std::cerr<<"dest invalide"<<std::endl;
+                    return false;}
+                break;
+            default: // case piece non implémenter
+                std::cerr<<"faire les different cas du switch déplacement"<<std::endl;
+                break;
+        }
+    }
+    else{std::cerr<<"src invalide"<<std::endl;
+        return false;}
+}
 
 void CarteStoch::attaque(int src, int dest){}
 
