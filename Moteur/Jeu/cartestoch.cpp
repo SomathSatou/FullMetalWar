@@ -98,6 +98,7 @@ bool CarteStoch::deplacement(int src,int dest){
     }
     else{std::cerr<<"src invalide"<<std::endl;
         return false;}
+    return false;
 }
 
 void CarteStoch::attaque(int src, int dest){}
