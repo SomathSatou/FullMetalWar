@@ -1,6 +1,6 @@
 #include "Jeu.h"
 
-Jeu::Jeu(std::vector<Joueur * > joueurs, std::vector<std::pair<typePiece, int> >& liste_pieces, int longueur, int largeur, int nombreToursMax, int repartitionRessource) :
+Jeu::Jeu(std::vector<Joueur *> joueurs, std::vector<std::pair<typePiece, int> >& liste_pieces, int longueur, int largeur, int nombreToursMax, int repartitionRessource) :
     m_joueurs(joueurs),
     m_tourMax(nombreToursMax),
     m_carte(longueur, largeur),
@@ -184,6 +184,9 @@ void Jeu::checkJoueurs(){
         j->checkPieces();
 }
 
+
+
+
 void Jeu::finDeTourJoueur() {
     //m_joueurs[m_joueurCourrant].finDeTour();
     if((unsigned)m_joueurCourant == m_joueurs.size()-2){ // -2 car il y a le joueur NEUTRE dans la liste et qu'il ne compte pas
@@ -199,7 +202,7 @@ void Jeu::finDeTourJoueur() {
 
     if(dynamic_cast<joueurStochastique *>(m_joueurs[m_joueurCourant])){
         std::cout << "\nLe joueur stochastique joue\n";
-        //listeOrdre(m_joueurs[m_joueurCourant]->joue());
+        listeOrdre(m_joueurs[m_joueurCourant]->joue());
     }
 
 }

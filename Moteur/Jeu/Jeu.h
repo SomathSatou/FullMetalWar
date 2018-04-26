@@ -52,6 +52,16 @@ public :
 
     void checkJoueurs();
 
+    void listeOrdre(std::vector<Action> actions){
+        for(const auto & a : actions){
+            int xs = a.src%m_carte.getLongueur();
+            int ys = (a.src-xs) / m_carte.getLongueur();
+            int xd = a.dest%m_carte.getLongueur();
+            int yd = (a.dest-xd) / m_carte.getLongueur();
+            ordre(coordonnees(xs,ys),coordonnees(xd,yd));
+        }
+    }
+
     void finDeTourJoueur();
 
 private :

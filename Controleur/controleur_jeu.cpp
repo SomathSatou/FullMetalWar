@@ -76,7 +76,7 @@ int COULEURToInt(Couleur c) {
 
 } // END
 
-Controleur_Jeu::Controleur_Jeu(const std::vector<Joueur*> listeJoueurs,int longueur, int largeur, QObject *parent) :
+Controleur_Jeu::Controleur_Jeu(const std::vector<Joueur*>  listeJoueurs,int longueur, int largeur, QObject *parent) :
     QObject(parent),
     _parent(parent),
     _positionCurrentCase(0,0)
