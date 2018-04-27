@@ -25,15 +25,15 @@ int main(int argc, char *argv[])
 //    testJ.push_back(new Joueur("Toto",Couleur::ROUGE));
 //    std::vector<std::pair<typePiece,int>> testP;
 //    testP.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
-//    Jeu Test(testJ,testP,TypeCarte::PLAINES,false,lo,la);
+//    Jeu Test(testJ,testP,TypeCarte::MERS,false,lo,la);
 //    Noeud tmp(Test.getCarte());
 //    tmp.getCarte().Afficher();
 //    tmp.getCarte().deplacement(0,1);
 //    tmp.getCarte().Afficher();
-//    tmp.getFils()[0]->getCarte().Afficher();
+//    //tmp.getFils()[0]->getCarte().Afficher();
 
 
-     return 0;
+//     return 0;
 
     /*
     Joueur * j1 = new Joueur("J1",Couleur::BLEU);

@@ -1,7 +1,7 @@
 #include "arbrestochastique.h"
 #include "Moteur/Piece/allpieces.h"
 
-std::vector<Action> randomAction(CarteStoch & c){std::vector<Action> a; return a;}
+std::vector<Action> randomAction(CarteStoch & c){UNUSED(c);std::vector<Action> a; return a;}
 
 Noeud::Noeud(const Carte & c) : _carte(c),_nbr_recherche(0),_nbr_valeur(0),_fils(0),_Actions(0),_pere(nullptr),_prof(0){
     load();
@@ -91,7 +91,7 @@ void Noeud::setCarte(Carte c) {_carte = c;}
 void Noeud::save(){;}
 
 void Noeud::load(){
-    std::string cheminBase = "../../ProjetL3/FullMetalWar";
+    std::string cheminBase = "../FullMetalWar";
     std::string chemin = cheminBase+"/Ressources/Stochastique/Carte";
     switch(_carte.getType()){
         case 1:
@@ -113,11 +113,12 @@ void Noeud::load(){
     std::string temp = std::to_string(longueur)+"_"+std::to_string(largeur)+".text";
     chemin += temp;
     std::cout<<chemin<<std::endl;
+            std::cout << __FILE__ << std::endl;
     std::ifstream f(chemin,std::ios::in);
     if(f.bad()){
         std::cout << "fichier non trouvé" << std::endl;
         std::cout << __FILE__ << std::endl;
-        std::ofstream ft(chemin.c_str(), std::ios::out);
+        std::ofstream ft(chemin.c_str(), std::ios::out | std::ios::trunc );
         if ( !ft ){
 
             std::cerr << "Erreur de creation du fichier" << std::endl;

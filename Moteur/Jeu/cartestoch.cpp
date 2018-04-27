@@ -85,7 +85,7 @@ bool CarteStoch::deplacement(int src,int dest){
                          setPiece(getPlateau()[src].piece,dest);
                          setPieceType(0,src);
                          return true;}
-                     else{std::cerr<<"deplacement interdit"<<std::endl;
+                     else{std::cerr<<"deplacement interdit"<<src<<" "<<dest<<std::endl;
                           return false;}
                     }
                 else{std::cerr<<"dest invalide"<<std::endl;
@@ -101,7 +101,7 @@ bool CarteStoch::deplacement(int src,int dest){
     return false;
 }
 
-void CarteStoch::attaque(int src, int dest){}
+void CarteStoch::attaque(int src, int dest){src = dest;}
 
 int CarteStoch::getLongueur() const{return _longueur;}
 
