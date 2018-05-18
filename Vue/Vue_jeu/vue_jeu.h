@@ -15,12 +15,12 @@ class Vue_Jeu : public QWidget
 public:
     Vue_Jeu(int longueur, int largeur, QWidget *parent = 0);
 
-    const MiniMap* getMiniMap() const { return _tableauDeBord->getMiniMap(); }
-    const ModelisationJeu* getModelisation() const { return m; }
-    const QPushButton* getFinDeTour() const { return _tableauDeBord->getFinDeTour(); }
-    const InfoBarre* getInfoBarre() const { return _infoBarre; }
-    const InformationPiece* getInformationPiece() const { return _tableauDeBord->getInformationPiece(); }
-    const ModelisationUnite* getModelisationUnite() const { return _tableauDeBord->getModelisationUnite(); }
+    const MiniMap* getMiniMap() const;
+    const ModelisationJeu* getModelisation() const;
+    const QPushButton* getFinDeTour() const;
+    const InfoBarre* getInfoBarre() const;
+    const InformationPiece* getInformationPiece() const;
+    const ModelisationUnite* getModelisationUnite() const;
 
 private:
     std::vector<OngletJoueur*> _listeOnglet;

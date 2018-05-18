@@ -1,6 +1,6 @@
 #include "ongletjoueur.h"
 
-OngletJoueur::OngletJoueur(QString pseudo,Couleur couleur, int pa, int pa_max,QWidget *parent) :
+OngletJoueur::OngletJoueur(QString pseudo, Couleur coul, int pa, int pa_max, QWidget *parent) :
     QWidget(parent)
 {
     // On récupère la taille de l'écran de l'utilisateur
@@ -24,15 +24,7 @@ OngletJoueur::OngletJoueur(QString pseudo,Couleur couleur, int pa, int pa_max,QW
 
     setPseudo(pseudo);
     setPA(pa,pa_max);
-    setCouleur(couleur);
-}
-
-void OngletJoueur::paintEvent(QPaintEvent *)
-{
-    QStyleOption opt;
-    opt.init(this);
-    QPainter p(this);
-    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+    setCouleur(coul);
 }
 
 void OngletJoueur::setPseudo(QString pseudo) {
@@ -50,26 +42,33 @@ void OngletJoueur::setPA(int pa, int pa_max) {
     _label_PA->setText(text);
 }
 
-void OngletJoueur::setCouleur(Couleur couleur) {
+void OngletJoueur::setCouleur(Couleur coul) {
 
-    switch(couleur){
+    switch(coul){
 
-        case Couleur::ROUGE :
-            setStyleSheet("background-color : red");
-            break;
-        case Couleur::BLEU :
-            setStyleSheet("background-color : blue");
-            break;
-        case Couleur::VERT:
-            setStyleSheet("background-color : green");
-            break;
-        case Couleur::JAUNE:
-            setStyleSheet("background-color : yellow");
-            break;
-        default :
-            setStyleSheet("background-color : white");
+    case Couleur::ROUGE :
+        setStyleSheet("background-color : red");
+        break;
+    case Couleur::BLEU :
+        setStyleSheet("background-color : blue");
+        break;
+    case Couleur::VERT:
+        setStyleSheet("background-color : green");
+        break;
+    case Couleur::JAUNE:
+        setStyleSheet("background-color : yellow");
+        break;
+    default :
+        setStyleSheet("background-color : white");
 
     } // END SWITCH
 
-} // END
+}
 
+void OngletJoueur::paintEvent(QPaintEvent *)
+{
+    QStyleOption opt;
+    opt.init(this);
+    QPainter p(this);
+    style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+}

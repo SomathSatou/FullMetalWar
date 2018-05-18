@@ -38,6 +38,14 @@ Vue_MenuPrincipal::Vue_MenuPrincipal(QWidget *parent) : QWidget(parent)
     connect(_bouton_quitter,&QPushButton::clicked,&QApplication::quit);
 }
 
+QPushButton *Vue_MenuPrincipal::getBoutonJouer() const { return _bouton_jouer; }
+
+QPushButton *Vue_MenuPrincipal::getBoutonSand() const { return _bouton_sandbox; }
+
+QPushButton *Vue_MenuPrincipal::getBoutonTestA() const { return _bouton_test_a; }
+
+QPushButton *Vue_MenuPrincipal::getBoutonTestS() const { return _bouton_test_s; }
+
 void Vue_MenuPrincipal::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;

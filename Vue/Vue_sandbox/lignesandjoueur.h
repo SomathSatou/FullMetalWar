@@ -28,6 +28,7 @@ private:
     QComboBox* _listeCouleur;
     QSpinBox* _PA_turn;
     QSpinBox* _PA_max;
+    QComboBox* _typeJoueur;
 
     int _numeroJoueur;
 
@@ -36,12 +37,14 @@ signals:
     void sendCouleur(int numero, int indexCouleur);
     void sendPAturn(int numero, int value);
     void sendPAmax(int numero, int value);
+    void sendType(int numero, int value);
 
 public slots:
     void nomChanged(const QString& nom);
     void couleurChanged(int indexCouleur);
     void PA_turnChanged(int value);
     void PA_maxChanged(int value);
+    void TypeChanged(int value);
 };
 
 

@@ -23,6 +23,10 @@ FormulaireBouton::FormulaireBouton(QWidget *parent) : QWidget(parent)
     _layout->addWidget(_retour);
 }
 
+QPushButton *FormulaireBouton::getBoutonRetour() const { return _retour; }
+
+QPushButton *FormulaireBouton::getBoutonJouer() const { return _jouer; }
+
 void FormulaireBouton::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;

@@ -2,57 +2,57 @@
 
 using namespace std;
 
-TYPECASE integerToTYPECASE(int i) {
+typeCase integerTotypeCase(int i) {
     switch(i) {
-    case 0 : return TYPECASE::PLAINE;
-    case 1 : return TYPECASE::MONTAGNE;
-    case 2 : return TYPECASE::MER;
-    case 3 : return TYPECASE::MARAIS;
-    case 4 : return TYPECASE::RECIF;
+    case 0 : return typeCase::PLAINE;
+    case 1 : return typeCase::MONTAGNE;
+    case 2 : return typeCase::MER;
+    case 3 : return typeCase::MARAIS;
+    case 4 : return typeCase::RECIF;
     default :
-        cout << "ERREUR integerToTYPECASE" << endl;
+//        cout << "ERREUR integerTotypeCase" << endl;
         exit(0);
     }
 }
 
-int TYPECASEToInteger(TYPECASE c) {
+int typeCaseToInteger(typeCase c) {
     switch(c) {
-    case TYPECASE::PLAINE : return 0;
-    case TYPECASE::MONTAGNE : return 1;
-    case TYPECASE::MER : return 2;
-    case TYPECASE::MARAIS : return 3;
-    case TYPECASE::RECIF : return 4;
+    case typeCase::PLAINE : return 0;
+    case typeCase::MONTAGNE : return 1;
+    case typeCase::MER : return 2;
+    case typeCase::MARAIS : return 3;
+    case typeCase::RECIF : return 4;
     default :
-        cout << "ERREUR TYPECASEToInteger" << endl;
+//        cout << "ERREUR typeCaseToInteger" << endl;
         exit(0);
     }
 }
 
-TYPECASE qstringToTYPECASE(QString s) {
+typeCase qstringTotypeCase(QString s) {
     if(s.toUpper().compare("PLAINE") == 0)
-        return TYPECASE::PLAINE;
+        return typeCase::PLAINE;
 
     if(s.toUpper().compare("MONTAGNE") == 0)
-        return TYPECASE::MONTAGNE;
+        return typeCase::MONTAGNE;
 
     if(s.toUpper().compare("MER") == 0)
-        return TYPECASE::MER;
+        return typeCase::MER;
 
     if(s.toUpper().compare("MARAIS") == 0)
-        return TYPECASE::MARAIS;
+        return typeCase::MARAIS;
 
     if(s.toUpper().compare("RECIF") == 0)
-        return TYPECASE::RECIF;
+        return typeCase::RECIF;
 
-    return TYPECASE::VIDE;
+    return typeCase::VIDE;
 }
 
 RegleCarte::RegleCarte(const QString& nomFichier) :
     _nomFichier(nomFichier),
-    _regles(NB_TYPECASE*NB_TYPECASE + NB_TYPECASE*NB_TYPECASE*NB_TYPECASE)
+    _regles(NB_typeCase*NB_typeCase + NB_typeCase*NB_typeCase*NB_typeCase)
 {
     if(!read(_nomFichier)) {
-        cout << "ERREUR : lecture  des règles" << endl;
+//        cout << "ERREUR : lecture  des règles" << endl;
         exit(0);
     }
 }
@@ -65,7 +65,7 @@ bool RegleCarte::read(const QString& nomFichier) {
     QFile fichier(nomFichier);
 
     if(!fichier.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        cout << " ERREUR : le fichier n'a pas pu être ouvert" << endl;
+//        cout << " ERREUR : le fichier n'a pas pu être ouvert" << endl;
         return false;
     } // END IF
 
@@ -81,9 +81,9 @@ bool RegleCarte::read(const QString& nomFichier) {
             running = false;
         else {
 
-            for(int i = 0; i<NB_TYPECASE; i++){
+            for(int i = 0; i<NB_typeCase; i++){
                 flux >> value;
-                addRegle(qstringToTYPECASE(gauche),qstringToTYPECASE(haut),integerToTYPECASE(i),value);
+                addRegle(qstringTotypeCase(gauche),qstringTotypeCase(haut),integerTotypeCase(i),value);
             }
 
         } // END ELSE
@@ -95,28 +95,28 @@ bool RegleCarte::read(const QString& nomFichier) {
     return true;
 } // END
 
-bool RegleCarte::addRegle(TYPECASE gauche, TYPECASE haut, TYPECASE type_case, int value) {
+bool RegleCarte::addRegle(typeCase gauche, typeCase haut, typeCase type_case, int value) {
 
-    if((gauche == TYPECASE::VIDE) && (haut == TYPECASE::VIDE)) {
-        cout << "ERREUR : le fichier est mal écrit" << endl;
+    if((gauche == typeCase::VIDE) && (haut == typeCase::VIDE)) {
+//        cout << "ERREUR : le fichier est mal écrit" << endl;
         return false;
     } // END IF
 
-    if(haut == TYPECASE::VIDE) {
-        _regles[NB_TYPECASE*TYPECASEToInteger(gauche)+TYPECASEToInteger(type_case)] = value;
+    if(haut == typeCase::VIDE) {
+        _regles[NB_typeCase*typeCaseToInteger(gauche)+typeCaseToInteger(type_case)] = value;
     } // END IF
     else {
-        _regles[NB_TYPECASE*NB_TYPECASE*(TYPECASEToInteger(gauche)+1)+NB_TYPECASE*TYPECASEToInteger(haut)+TYPECASEToInteger(type_case)] = value;
+        _regles[NB_typeCase*NB_typeCase*(typeCaseToInteger(gauche)+1)+NB_typeCase*typeCaseToInteger(haut)+typeCaseToInteger(type_case)] = value;
     } // END ELSE
 
     return true;
 } // END
 
-int RegleCarte::getRegle(TYPECASE gauche, TYPECASE haut, TYPECASE type_case) const {
-    return _regles[NB_TYPECASE*NB_TYPECASE*(TYPECASEToInteger(gauche)+1)+NB_TYPECASE*TYPECASEToInteger(haut)+TYPECASEToInteger(type_case)];
+int RegleCarte::getRegle(typeCase gauche, typeCase haut, typeCase type_case) const {
+    return _regles[NB_typeCase*NB_typeCase*(typeCaseToInteger(gauche)+1)+NB_typeCase*typeCaseToInteger(haut)+typeCaseToInteger(type_case)];
 } // END
 
-int RegleCarte::getRegle(TYPECASE case_adjacente, TYPECASE type_case) const {
-    return _regles[NB_TYPECASE*TYPECASEToInteger(case_adjacente)+TYPECASEToInteger(type_case)];
+int RegleCarte::getRegle(typeCase case_adjacente, typeCase type_case) const {
+    return _regles[NB_typeCase*typeCaseToInteger(case_adjacente)+typeCaseToInteger(type_case)];
 } // END
 

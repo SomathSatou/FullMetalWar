@@ -36,6 +36,10 @@ Sand_reglage_carte::Sand_reglage_carte(QWidget *parent) : QWidget(parent)
     connect(_minerais,static_cast<void(QCheckBox::*)(int)>(&QCheckBox::stateChanged),this,&Sand_reglage_carte::mineraisChanged);
 }
 
+QComboBox *Sand_reglage_carte::getType() const {return _typeCarte;}
+
+QCheckBox *Sand_reglage_carte::getMinerai() const {return _minerais;}
+
 void Sand_reglage_carte::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;

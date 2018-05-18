@@ -1,5 +1,5 @@
 #include "modelisationunite.h"
-#include "Moteur/Piece/Piece.h"
+#include "Moteur/Piece/piece.h"
 
 ModelisationUnite::ModelisationUnite(QWidget * parent): QOpenGLWidget(parent), camera(), tailleX(0), tailleZ(0) {}
 ModelisationUnite::~ModelisationUnite(){ glDeleteBuffers(1, &monIndiceVBO); }
@@ -64,7 +64,7 @@ void    ModelisationUnite::colorerMonMesh(){
 
 void ModelisationUnite::parametrerModelisation(QString monunite, Couleur macouleur){
     monObjet = qstringToOBJ(monunite);
-    std::cout << monObjet << " "  << NEANT << std::endl;
+//    std::cout << monObjet << " "  << NEANT << std::endl;
     if(monObjet != NEANT) {
         maCouleur = macouleur;
         creerVBO();

@@ -27,3 +27,5 @@ Vue_Score::Vue_Score(const QString &pseudo, int score, QWidget *parent) : QWidge
     layout->addStretch(5);
 
 }
+
+QPushButton *Vue_Score::getRetour() const { return _retour; }

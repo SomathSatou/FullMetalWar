@@ -1,34 +1,34 @@
 #ifndef TRANSPORTEUR_H
 #define TRANSPORTEUR_H
-#include "Moteur/Piece/Piece.h"
+#include "Moteur/Piece/piece.h"
 #include <vector>
 
 class Transporteur : public Piece {
 
-    /*
-     * Classe abstraite Transporteur
-     * Un transporteur est caractérisé par :
-     *      - un espace de stockage maximum
-     *      - l'espace de stockage courant
-     *      - la liste des pièces stockées
-     */
-
 public:
-    // Constructeur avec les informations nécessaires à la création d'un Transporteur
-    Transporteur(coordonnees coor, Couleur color,Joueur * proprietaire  ,int espaceMax);
-    ~Transporteur();
-
+    Transporteur(Couleur couleur,int espaceMax)
+        :Piece(couleur),
+          m_espaceMax(espaceMax){
+    }
+    ~Transporteur(){}
+/*
     // Méthodes d'accès aux données
-    int getEspaceStockage() const;
-    int getEspaceCourant() const;
-    const std::vector<Piece *>& getEnsemblePieces() const;
+    int getEspaceStockage() const { return m_espaceMax; }
+    int getEspaceCourant() const {
+        int ret = 0;
+        for(auto p : m_ensemblePiecesTransportees){
+            ret += p->getPoids();
+        }
+        return ret;
+    }
+    const std::vector<Piece *>& getEnsemblePieces() const { return m_ensemblePiecesTransportees; }
 
     // Méthodes de mise à jour des données
-    void setEspaceStockage(const int espace);
+    void setEspaceStockage(const int espace) {m_espaceMax = espace; }
     void setEspaceCourant(const int espace);
-    void setEnsemblePieces(const std::vector<Piece *> en);
+    void setEnsemblePieces(const std::vector<Piece *> en) { m_ensemblePiecesTransportees = en; }
 
-
+*/
     /*
     bool Transporteur::charger(Piece * p){
         if( (m_espaceCourant+p->getEncombrement()) > m_espaceStockage)
@@ -42,7 +42,7 @@ public:
     */
 
     //bool Transporteur::decharger(Piece * p){
-        /*for(std::vector<Piece>::iterator i = m_ensemblePiecesTransportees.begin(); i != m_ensemblePiecesTransportees.end(); i++){
+    /*for(std::vector<Piece>::iterator i = m_ensemblePiecesTransportees.begin(); i != m_ensemblePiecesTransportees.end(); i++){
             if(p != (*i))
                 nouveau.push_back((*i));
         }

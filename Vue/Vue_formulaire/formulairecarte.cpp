@@ -36,6 +36,10 @@ FormulaireCarte::FormulaireCarte(QWidget *parent) : QWidget(parent)
 
 }
 
+QSpinBox *FormulaireCarte::getSpinBoxLongueur() const { return _longueur_carte; }
+
+QSpinBox *FormulaireCarte::getSpinBoxLargeur() const { return _largeur_carte; }
+
 void FormulaireCarte::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;

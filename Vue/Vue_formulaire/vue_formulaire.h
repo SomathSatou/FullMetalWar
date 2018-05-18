@@ -14,9 +14,9 @@ public:
     explicit Vue_Formulaire(QWidget *parent = 0);
     ~Vue_Formulaire();
 
-    QPushButton* getBoutonRetour() const { return _formBouton->getBoutonRetour(); }
-    QPushButton* getBoutonJouer() const { return _formBouton->getBoutonJouer(); }
-    Controleur_Formulaire* getControleur() const { return _controleur; }
+    QPushButton* getBoutonRetour() const;
+    QPushButton* getBoutonJouer() const;
+    Controleur_Formulaire* getControleur() const;
 
 protected:
     void paintEvent(QPaintEvent *event);

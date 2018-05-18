@@ -13,15 +13,15 @@ public:
     explicit Controleur_Sandbox(QObject *parent = 0);
 
     //accesseur
-    int getLongueur() const { return _longueurMap; }
-    int getLargeur() const { return _largeurMap; }
-    TypeCarte getType() const { return _type; }
-    int getMinerais() const { return _minerais; }
-    std::vector<std::pair<typePiece,int>> getListePiece() const {return _listePiece;}
-    const std::vector<Joueur *>& getListeJoueurs() const { return _listeJoueurs; }
+    int getLongueur() const;
+    int getLargeur() const;
+    TypeCarte getType() const;
+    int getMinerais() const;
+    std::vector<std::pair<typePiece,int>> getListePiece() const;
+    const std::vector<Joueur *>& getListeJoueurs() const;
 
-    void addJoueur();
-    void supprJoueur();
+//    void addJoueur();
+//    void supprJoueur();
 
     void afficheListe();
 
@@ -60,6 +60,7 @@ public slots:
     void setNom(int numero, const QString& nom);
     void setPAturn(int numero, int value);
     void setPAmax(int numero, int value);
+    void setTypeJoueur(int numero,int);
 };
 
 #endif // CONTROLEUR_SANDBOX_H

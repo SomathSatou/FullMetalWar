@@ -1,17 +1,17 @@
-HEADERS +=  Moteur/Jeu/Joueur.h \
-            $$PWD/CaseMap.h \
-            $$PWD/Jeu.h \
-            $$PWD/Carte.h \
+HEADERS += Moteur/Jeu/joueur.h \
+            $$PWD/jeu.h \
+            $$PWD/plateau.h \
             $$PWD/allmotor.h \
     $$PWD/RegleCarte.h \
-    $$PWD/arbrestochastique.h \
     $$PWD/joueurstochastique.h \
-    $$PWD/caretestoch.h
-SOURCES += Moteur/Jeu/Joueur.cpp \
-            $$PWD/CaseMap.cpp \
-            $$PWD/Jeu.cpp \
-            $$PWD/Carte.cpp \
+    $$PWD/joueuralphabeta.h \
+    $$PWD/arbrestochastique.h \
+    $$PWD/cartestoch.h
+SOURCES += Moteur/Jeu/joueur.cpp \
+            $$PWD/plateau.cpp \
+            $$PWD/jeu.cpp \
     $$PWD/RegleCarte.cpp \
-    $$PWD/arbrestochastique.cpp \
     $$PWD/joueurstochastique.cpp \
+    $$PWD/joueuralphabeta.cpp \
+    $$PWD/arbrestochastique.cpp \
     $$PWD/cartestoch.cpp

@@ -16,9 +16,9 @@ public:
     explicit Vue_Sandbox(QWidget *parent = 0);
     ~Vue_Sandbox();
 
-    QPushButton* getBoutonRetour() const { return _formBouton->getBoutonRetour(); }
-    QPushButton* getBoutonJouer() const { return _formBouton->getBoutonJouer(); }
-    Controleur_Sandbox* getControleur() const { return _controleur; }
+    QPushButton* getBoutonRetour() const;
+    QPushButton* getBoutonJouer() const;
+    Controleur_Sandbox* getControleur() const;
 
 protected:
     void paintEvent(QPaintEvent *event);
@@ -32,8 +32,8 @@ private:
     QHBoxLayout* _layout_carte; //Partie reglage de la carte
     QHBoxLayout* _layout_unite; // reglage des unité
 
-    QPushButton* _ajouter_joueur; // Pour ajouter une ligneJoueur
-    QPushButton* _supprimer_joueur; // Pour supprimer un ligneJoueur
+//    QPushButton* _ajouter_joueur; // Pour ajouter une ligneJoueur
+//    QPushButton* _supprimer_joueur; // Pour supprimer un ligneJoueur
     int _nombreJoueur; //Compte le nombre de joueur de la partie
 
     SandCarte* _formCarte;
@@ -44,8 +44,8 @@ private:
 signals:
 
 public slots:
-    void addLigneJoueur();
-    void supprLigneJoueur();
+//    void addLigneJoueur();
+//    void supprLigneJoueur();
 };
 
 #endif // VUE_SANDBOX_H

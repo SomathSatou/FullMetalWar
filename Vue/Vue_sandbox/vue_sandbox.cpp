@@ -25,17 +25,17 @@ Vue_Sandbox::Vue_Sandbox(QWidget *parent) :
     //_grid_layout->setContentsMargins(width/8,0,width/8,0);
 
     //Bouton pour ajouter une ligne de joueur
-    _ajouter_joueur = new QPushButton("+ AJOUTER JOUEUR",this);
-    _supprimer_joueur = new QPushButton("- SUPPRIMER JOUEUR",this);
-    _supprimer_joueur->setEnabled(false);
+//    _ajouter_joueur = new QPushButton("+ AJOUTER JOUEUR",this);
+//    _supprimer_joueur = new QPushButton("- SUPPRIMER JOUEUR",this);
+//    _supprimer_joueur->setEnabled(false);
 
     LigneSandJoueur* j1 = new LigneSandJoueur(0,this); // Ligne du joueur 1
     LigneSandJoueur* j2 = new LigneSandJoueur(1,this); // Ligne du joueur 2
 
     _grid_layout->addWidget(j1,0,0,1,0);
     _grid_layout->addWidget(j2,1,0,1,0);
-    _grid_layout->addWidget(_ajouter_joueur,_nombreJoueur,0);
-    _grid_layout->addWidget(_supprimer_joueur,_nombreJoueur,1);
+//    _grid_layout->addWidget(_ajouter_joueur,_nombreJoueur,0);
+//    _grid_layout->addWidget(_supprimer_joueur,_nombreJoueur,1);
 
     _layout_principal->addStretch(1);
     _layout_principal->addLayout(_grid_layout);
@@ -76,8 +76,8 @@ Vue_Sandbox::Vue_Sandbox(QWidget *parent) :
     layout_test->addStretch(1);
 
     // Connection des bouton pour ajouter/enlever une ligne de formulaire pour joueur à leur slot respectif
-    connect(_ajouter_joueur,&QPushButton::clicked,this,&Vue_Sandbox::addLigneJoueur);
-    connect(_supprimer_joueur,&QPushButton::clicked,this,&Vue_Sandbox::supprLigneJoueur);
+//    connect(_ajouter_joueur,&QPushButton::clicked,this,&Vue_Sandbox::addLigneJoueur);
+//    connect(_supprimer_joueur,&QPushButton::clicked,this,&Vue_Sandbox::supprLigneJoueur);
 
     //Connection des QSpinBox au controleur
     connect(_formCarte->getSpinBoxLongueur(),static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),_controleur,&Controleur_Sandbox::setLongueur);
@@ -115,6 +115,12 @@ Vue_Sandbox::~Vue_Sandbox(){
     delete _controleur;
 }
 
+QPushButton *Vue_Sandbox::getBoutonRetour() const { return _formBouton->getBoutonRetour(); }
+
+QPushButton *Vue_Sandbox::getBoutonJouer() const { return _formBouton->getBoutonJouer(); }
+
+Controleur_Sandbox *Vue_Sandbox::getControleur() const { return _controleur; }
+
 void Vue_Sandbox::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;
@@ -123,49 +129,49 @@ void Vue_Sandbox::paintEvent(QPaintEvent *)
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
-void Vue_Sandbox::addLigneJoueur(){
+//void Vue_Sandbox::addLigneJoueur(){
 
-        LigneSandJoueur* j = new LigneSandJoueur(_nombreJoueur,this);
+//        LigneSandJoueur* j = new LigneSandJoueur(_nombreJoueur,this);
 
-        _grid_layout->addWidget(j,_nombreJoueur,0,1,0);
-        _grid_layout->addWidget(_ajouter_joueur,_nombreJoueur+1,0);
-        _grid_layout->addWidget(_supprimer_joueur,_nombreJoueur+1,1);
+//        _grid_layout->addWidget(j,_nombreJoueur,0,1,0);
+//        _grid_layout->addWidget(_ajouter_joueur,_nombreJoueur+1,0);
+//        _grid_layout->addWidget(_supprimer_joueur,_nombreJoueur+1,1);
 
-        _controleur->addJoueur();
+//        _controleur->addJoueur();
 
-        connect(j,&LigneSandJoueur::sendNom,_controleur,&Controleur_Sandbox::setNom);
-        connect(j,&LigneSandJoueur::sendCouleur,_controleur,&Controleur_Sandbox::setCouleur);
-        connect(j,&LigneSandJoueur::sendPAturn,_controleur,&Controleur_Sandbox::setPAturn);
-        connect(j,&LigneSandJoueur::sendPAmax,_controleur,&Controleur_Sandbox::setPAmax);
-        _nombreJoueur++;
+//        connect(j,&LigneSandJoueur::sendNom,_controleur,&Controleur_Sandbox::setNom);
+//        connect(j,&LigneSandJoueur::sendCouleur,_controleur,&Controleur_Sandbox::setCouleur);
+//        connect(j,&LigneSandJoueur::sendPAturn,_controleur,&Controleur_Sandbox::setPAturn);
+//        connect(j,&LigneSandJoueur::sendPAmax,_controleur,&Controleur_Sandbox::setPAmax);
+//        _nombreJoueur++;
 
-        if(!_supprimer_joueur->isEnabled())
-            _supprimer_joueur->setEnabled(true);
+//        if(!_supprimer_joueur->isEnabled())
+//            _supprimer_joueur->setEnabled(true);
 
-        if(_nombreJoueur == 4)
-            _ajouter_joueur->setEnabled(false);
+//        if(_nombreJoueur == 4)
+//            _ajouter_joueur->setEnabled(false);
 
-}
+//}
 
-void Vue_Sandbox::supprLigneJoueur(){
+//void Vue_Sandbox::supprLigneJoueur(){
 
-        QLayoutItem* child;
+//        QLayoutItem* child;
 
-        child = _grid_layout->takeAt(_nombreJoueur-1);
-        child->widget()->deleteLater();
-        delete child;
+//        child = _grid_layout->takeAt(_nombreJoueur-1);
+//        child->widget()->deleteLater();
+//        delete child;
 
-        _controleur->supprJoueur();
+//        _controleur->supprJoueur();
 
-        _grid_layout->addWidget(_ajouter_joueur,_nombreJoueur-1,0);
-        _grid_layout->addWidget(_supprimer_joueur,_nombreJoueur-1,1);
+//        _grid_layout->addWidget(_ajouter_joueur,_nombreJoueur-1,0);
+//        _grid_layout->addWidget(_supprimer_joueur,_nombreJoueur-1,1);
 
-        _nombreJoueur--;
+//        _nombreJoueur--;
 
-        if(!_ajouter_joueur->isEnabled())
-            _ajouter_joueur->setEnabled(true);
+//        if(!_ajouter_joueur->isEnabled())
+//            _ajouter_joueur->setEnabled(true);
 
-        if(_nombreJoueur == 2)
-            _supprimer_joueur->setEnabled(false);
+//        if(_nombreJoueur == 2)
+//            _supprimer_joueur->setEnabled(false);
 
-}
+//}

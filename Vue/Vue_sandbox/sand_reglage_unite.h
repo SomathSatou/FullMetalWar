@@ -17,13 +17,13 @@ class Sand_reglage_unite : public QWidget
     Q_OBJECT
 public:
     explicit Sand_reglage_unite(QWidget *parent = 0);
-    QSpinBox* getChar() const { return _char; }
-    QSpinBox* getGrosTas() const { return _grosTas; }
-    QSpinBox* getCrabe() const { return _crabe; }
-    QSpinBox* getPondeuse() const { return _pondeuse; }
-    QSpinBox* getBase() const { return _base; }
-    QSpinBox* getBarge() const { return _barge; }
-    QSpinBox* getVedette() const { return _vedette; }
+    QSpinBox* getChar() const;
+    QSpinBox* getGrosTas() const;
+    QSpinBox* getCrabe() const;
+    QSpinBox* getPondeuse() const;
+    QSpinBox* getBase() const;
+    QSpinBox* getBarge() const;
+    QSpinBox* getVedette() const;
 
 protected:
     void paintEvent(QPaintEvent *);

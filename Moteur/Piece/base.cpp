@@ -1,17 +1,29 @@
 #include "base.h"
 
-Base::Base(coordonnees coor, Couleur coul, Joueur *j):
-    Piece(coor,coul,15,j){
+Base::Base(Couleur couleur):
+    Piece(couleur){
     setTypeDeplacement(new Deplacement_nul);
-    setTypeAttaque(new PorteeNulle);
+}
+
+Base::Base(const Base &b):
+    Piece(b.getCouleur()){
+    setTypeDeplacement(new Deplacement_nul);
 }
 
 Base::~Base(){}
 
-std::string Base::infoPiece() const{
+Base *Base::clone(){
+    return new Base(*this);
+}
+
+std::__cxx11::string Base::infoPiece() const{
     std::ostringstream oss;
     oss << "Base ";
     return oss.str();
+}
+
+typePiece Base::type(){
+    return typePiece::BASE;
 }
 
 int Base::getPoids(){return 15;}

@@ -16,8 +16,8 @@ class SandCarte : public QWidget
     Q_OBJECT
 public:
     explicit SandCarte(QWidget *parent = 0);
-    QSpinBox* getSpinBoxLongueur() const { return _longueur_carte; }
-    QSpinBox* getSpinBoxLargeur() const { return _largeur_carte; }
+    QSpinBox* getSpinBoxLongueur() const;
+    QSpinBox* getSpinBoxLargeur() const;
 
 protected:
     void paintEvent(QPaintEvent *event);

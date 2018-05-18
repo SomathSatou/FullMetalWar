@@ -3,14 +3,24 @@
 
 #include<vector>
 
-#include"Piece.h"
+#include"piece.h"
 
 class Base : public Piece{
 
 public:
-    Base(coordonnees coor,Couleur coul,Joueur * j);
+    Base(Couleur couleur);
+
+    Base(const Base & b);
+
     ~Base();
+
+    virtual Base * clone() override;
+
     std::string infoPiece() const;
+
+    virtual typePiece type() override;
+
+
     int getPoids();
 
 private:

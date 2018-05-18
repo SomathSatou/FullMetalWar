@@ -15,8 +15,8 @@ class SandBouton : public QWidget
     Q_OBJECT
 public:
     explicit SandBouton(QWidget *parent = 0);
-    QPushButton* getBoutonRetour() const { return _retour; }
-    QPushButton* getBoutonJouer() const { return _jouer; }
+    QPushButton* getBoutonRetour() const;
+    QPushButton* getBoutonJouer() const;
 
 protected:
     void paintEvent(QPaintEvent* e);

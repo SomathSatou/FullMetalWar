@@ -24,6 +24,12 @@ LigneSandJoueur::LigneSandJoueur(int numeroJoueur,QWidget *parent) : QWidget(par
     _listeCouleur->addItem("Vert");
     _listeCouleur->addItem("Jaune");
 
+    _typeJoueur = new QComboBox(this);
+    _typeJoueur->addItem("Humain");
+    _typeJoueur->addItem("Stochastique");
+    _typeJoueur->addItem("Alpha-Beta");
+
+
     _PA_turn = new QSpinBox(this);
     _PA_turn->setRange(10,40);
     _PA_turn->setFixedWidth(width/18);
@@ -44,6 +50,9 @@ LigneSandJoueur::LigneSandJoueur(int numeroJoueur,QWidget *parent) : QWidget(par
     QLabel* _label_PAmax = new QLabel(this);
     _label_PAmax->setText("  PA max :");
 
+    QLabel* _label_typeJoueur = new QLabel(this);
+    _label_PAmax->setText("  type de Joueur :");
+
     _layout->addStretch(2);
 
     _layout->addWidget(_label_nom);
@@ -60,12 +69,16 @@ LigneSandJoueur::LigneSandJoueur(int numeroJoueur,QWidget *parent) : QWidget(par
     _layout->addWidget(_label_PAmax);
     _layout->addWidget(_PA_max);
 
+    _layout->addWidget(_label_typeJoueur);
+    _layout->addWidget(_typeJoueur);
+
     _layout->addStretch(2);
 
     connect(_nomJoueur,&QLineEdit::textEdited,this,&LigneSandJoueur::nomChanged);
     connect(_listeCouleur,static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),this,&LigneSandJoueur::couleurChanged);
     connect(_PA_turn,static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),this,&LigneSandJoueur::PA_turnChanged);
     connect(_PA_max,static_cast<void(QSpinBox::*)(int)>(&QSpinBox::valueChanged),this,&LigneSandJoueur::PA_maxChanged);
+    connect(_typeJoueur,static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged),this,&LigneSandJoueur::TypeChanged);
 }
 
 void LigneSandJoueur::paintEvent(QPaintEvent *)
@@ -92,4 +105,6 @@ void LigneSandJoueur::PA_maxChanged(int value){
     emit sendPAmax(_numeroJoueur,value);
 }
 
-
+void LigneSandJoueur::TypeChanged(int value){
+    emit sendType(_numeroJoueur,value);
+}

@@ -36,6 +36,10 @@ SandCarte::SandCarte(QWidget *parent) : QWidget(parent)
 
 }
 
+QSpinBox *SandCarte::getSpinBoxLongueur() const { return _longueur_carte; }
+
+QSpinBox *SandCarte::getSpinBoxLargeur() const { return _largeur_carte; }
+
 void SandCarte::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;

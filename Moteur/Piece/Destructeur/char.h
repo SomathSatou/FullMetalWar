@@ -3,9 +3,18 @@
 #include "destructeur.h"
 
 class Char : public Destructeur {
+
 public:
-    Char(coordonnees coor, Couleur color , Joueur * proprietaire );
+    Char(Couleur couleur);
+
+    Char(const Char & c);
+
     ~Char();
+
+
+    virtual Char * clone() override;
+
+    virtual typePiece type() override;
 
     std::string infoPiece() const;
 };

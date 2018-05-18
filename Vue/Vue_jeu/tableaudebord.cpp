@@ -36,4 +36,12 @@ TableauDeBord::TableauDeBord(int longueur, int largeur, QWidget *parent) : QWidg
     _layout->addWidget(_infoPiece);
     _layout->addLayout(_layout_map);
 
-} 
+}
+
+const MiniMap *TableauDeBord::getMiniMap() const { return _minimap; }
+
+const QPushButton *TableauDeBord::getFinDeTour() const { return _finDeTour; }
+
+const InformationPiece *TableauDeBord::getInformationPiece() const { return _infoPiece; }
+
+const ModelisationUnite *TableauDeBord::getModelisationUnite() const { return _visuel_unite; }

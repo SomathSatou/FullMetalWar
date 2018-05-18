@@ -19,8 +19,8 @@ class Sand_reglage_carte : public QWidget
 public:
     explicit Sand_reglage_carte(QWidget *parent = 0);
 
-    QComboBox* getType() const {return _typeCarte;}
-    QCheckBox* getMinerai() const {return _minerais;}
+    QComboBox* getType() const;
+    QCheckBox* getMinerai() const;
 
 protected:
     void paintEvent(QPaintEvent *);

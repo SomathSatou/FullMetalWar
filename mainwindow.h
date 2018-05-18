@@ -6,6 +6,7 @@
 #include <Vue/vue.h>
 #include <Controleur/controleur_jeu.h>
 
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

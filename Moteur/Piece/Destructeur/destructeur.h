@@ -1,28 +1,48 @@
 #ifndef DESTRUCTEUR_H
 #define DESTRUCTEUR_H
-#include "Moteur/Piece/Piece.h"
+#include "Moteur/Piece/piece.h"
 
 class Destructeur : public Piece
 {
+
 public:
-    // Constructeur avec les informations nécessaires à la création d'un Destructeur
-    Destructeur(coordonnees coor, Couleur color, int pointDeVieMax , Joueur * proprietaire);
+    Destructeur(Couleur couleur);
+
     ~Destructeur();
 
-    void Reload();
-    int getCurrentMunition() const;
+    bool pretATirer();
+    void tire();
+    void rechargement();
+
     int getMunition() const;
 
+    bool maj() override;
 
-    bool maj_nouveau_tour() override{
-        m_munition=1;
-        return Piece::maj_nouveau_tour();
-    }
+    virtual int distance();
 
-    bool attaque(const coordonnees & ennemi) override;
+//    bool attaque(const coordonnees & ennemi) override{
+//        if(m_munition>0){
+//            if(getJoueur()->getCarte()->getCase(ennemi.first,ennemi.second).hasPiece()){
+//                Piece * e = getJoueur()->getCarte()->getCase(ennemi.first,ennemi.second).getPiece();
+
+//                if(e->getCouleur()!=getCouleur()){
+//                    for(auto & adv : _attaque->aPortee(getJoueur()->getCarte(),getCoordonnees(),getCouleur())){
+//                        if(adv.destination ==ennemi){
+//                            m_munition--;
+//                            e->prendreDegats(3);
+//                            return true;
+//                        }
+//                    }
+//                }
+
+//            }
+
+//        }
+//        return false;
+//    }
 
 private:
-    int m_munition;
+    int _munition;
 
 };
 

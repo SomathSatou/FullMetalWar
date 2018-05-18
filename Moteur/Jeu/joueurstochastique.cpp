@@ -1,23 +1,29 @@
 #include "joueurstochastique.h"
 
-std::vector<Action> joueurStochastique::joue(){
-    std::vector<Action> actions;
-    Action a;
-    a.faire=typeAction::DEPLACER;
-    a.src=24;
-    a.dest=23;
-    actions.push_back(a);
-    a.src=23;
-    a.dest=22;
-    actions.push_back(a);
-    a.src=22;
-    a.dest=21;
-    actions.push_back(a);
-    a.src=21;
-    a.dest=20;
-    actions.push_back(a);
-    a.src=20;
-    a.dest=21;
-    actions.push_back(a);
-    return actions;
+joueurStochastique::joueurStochastique(const std::string &pseudonyme, Couleur couleur,bool joueur)
+    :Joueur(pseudonyme,couleur,joueur),
+      _arbre(nullptr){}
+
+coups joueurStochastique::jouer(Plateau p){
+    UNUSED(p);
+    coups ret;
+    std::vector<Action> actions = _arbre->Courant->jouer();
+    for(auto f : _arbre->Courant->getFils()){
+        if (actions == f->getActions()){
+            _arbre->Courant = f;
+        }
+    }
+    for (auto a : actions){
+        ret.push_back(coup(Coordonnee(a.getSrc()%(_arbre->Courant->getCarte().getLongueur()),a.getSrc()/(_arbre->Courant->getCarte().getLongueur())),Coordonnee(a.getDest()%(_arbre->Courant->getCarte().getLongueur()),a.getDest()/(_arbre->Courant->getCarte().getLongueur())),a.getFaire()));
+    }
+
+    return ret;
 }
+
+Arbre *joueurStochastique::getArbre(){return _arbre;}
+
+void joueurStochastique::setArbre(Arbre *arbre)
+{
+    _arbre = arbre;
+}
+

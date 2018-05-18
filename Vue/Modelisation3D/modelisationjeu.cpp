@@ -557,7 +557,7 @@ void    ModelisationJeu::mousePressEvent(QMouseEvent *event){
         int y((int)position_carte.y());
         if(y==m_longueur){
             y=m_longueur-1;
-            std::cout << "\n\n\tcorrection y(modelisationjeu.cpp ligne 560)\n";
+//            std::cout << "\n\n\tcorrection y(modelisationjeu.cpp ligne 560)\n";
         }
         emit sendPositionDeplacement(x,y);
     }

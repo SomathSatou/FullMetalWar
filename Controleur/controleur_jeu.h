@@ -5,9 +5,11 @@
 #include <QObject>
 #include <Moteur/Jeu/allmotor.h>
 #include <Vue/Vue_jeu/vue_jeu.h>
-#include <Moteur/Piece/Piece.h>
+#include <Moteur/Piece/piece.h>
 
-QString TYPECASEToQString(TYPECASE t); // Transforme un élément de l'enumération TYPECASE en QString
+#include "defineclass.h"
+
+QString TYPECASEToQString(typeCase t); // Transforme un élément de l'enumération TYPECASE en QString
 QString PieceToQString(const Piece * p); // Transforme une piece en QString
 int COULEURToInt(Couleur c);
 
@@ -19,11 +21,14 @@ public:
     explicit Controleur_Jeu(const std::vector<Joueur*> listeJoueurs,int longueur, int largeur,TypeCarte type,bool min,std::vector<std::pair<typePiece,int>> listepiece, QObject *parent = 0);
     ~Controleur_Jeu();
 
-    Vue_Jeu* getVueJeu() const { return _vue_jeu; }
+    Vue_Jeu* getVueJeu() const;
     void initialisation();
     void getCase(int i); // Récupère la case voulue dans le moteur pour l'envoyer à la vue via les signaux sendCaseMiniMap/sendCaseModelisation
     void getNombrePACourant(int);
 
+
+    Jeu *getMoteur() const;
+    void setMoteur(Jeu *moteur);
 
 private:
     QObject* _parent;
@@ -46,8 +51,8 @@ signals:
      *  - couleur : la couleur du joueur qui possède la pièce
      *  - i : la position de la case à dessiner en position linéaire (mais peut éventuellement se changer en coordonnée basique)
      */
-    void sendCaseMiniMap(QString typecase, bool piece, int couleur, int i);
-    void sendCaseModelisation(QString typecase, QString piece, int couleur, int i);
+    void sendCaseMiniMap(QString typecase, bool piece, int Couleur, int i);
+    void sendCaseModelisation(QString typecase, QString piece, int Couleur, int i);
     void sendModelisationUnite(QString monunite, Couleur coul);
 
     void sendCreateOnglet(QString pseudo, int pa, int pa_max, Couleur coul);

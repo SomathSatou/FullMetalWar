@@ -110,6 +110,20 @@ Sand_reglage_unite::Sand_reglage_unite(QWidget *parent) : QWidget(parent)
 
 }
 
+QSpinBox *Sand_reglage_unite::getChar() const { return _char; }
+
+QSpinBox *Sand_reglage_unite::getGrosTas() const { return _grosTas; }
+
+QSpinBox *Sand_reglage_unite::getCrabe() const { return _crabe; }
+
+QSpinBox *Sand_reglage_unite::getPondeuse() const { return _pondeuse; }
+
+QSpinBox *Sand_reglage_unite::getBase() const { return _base; }
+
+QSpinBox *Sand_reglage_unite::getBarge() const { return _barge; }
+
+QSpinBox *Sand_reglage_unite::getVedette() const { return _vedette; }
+
 void Sand_reglage_unite::charChanged(int i){
     emit sendChar(i);
 }

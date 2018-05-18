@@ -18,10 +18,10 @@ class TableauDeBord : public QWidget
 public:
     explicit TableauDeBord(int longueur, int largeur, QWidget *parent = 0);
 
-    const MiniMap* getMiniMap() const { return _minimap; }
-    const QPushButton* getFinDeTour() const { return _finDeTour; }
-    const InformationPiece* getInformationPiece() const { return _infoPiece; }
-    const ModelisationUnite* getModelisationUnite() const { return _visuel_unite; }
+    const MiniMap* getMiniMap() const;
+    const QPushButton* getFinDeTour() const;
+    const InformationPiece* getInformationPiece() const;
+    const ModelisationUnite* getModelisationUnite() const;
 
 private:
     QHBoxLayout* _layout;

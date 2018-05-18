@@ -21,7 +21,7 @@ public:
 
     void setPseudo(QString pseudo);
     void setPA(int pa, int pa_max);
-    void setCouleur(Couleur couleur);
+    void setCouleur(Couleur coul);
 
 protected:
     void paintEvent(QPaintEvent *);

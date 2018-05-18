@@ -12,11 +12,11 @@ class Controleur_Formulaire : public QObject
 public:
     explicit Controleur_Formulaire(QObject *parent = 0);
 
-    int getLongueur() const { return _longueurMap; }
-    int getLargeur() const { return _largeurMap; }
+    int getLongueur() const;
+    int getLargeur() const;
     void addJoueur();
     void supprJoueur();
-    const std::vector<Joueur *>& getListeJoueurs() const { return _listeJoueurs; }
+    const std::vector<Joueur *>& getListeJoueurs() const;
 
 private:
     bool testInformation() const; // Va tester les informations entrées pour et dire si on doit ou non activer le bouton "JOUER" du formulaire

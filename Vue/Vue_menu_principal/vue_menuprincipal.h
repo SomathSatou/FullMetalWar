@@ -17,10 +17,10 @@ public:
     explicit Vue_MenuPrincipal(QWidget *parent = 0);
 
 
-    QPushButton* getBoutonJouer() const { return _bouton_jouer; }
-    QPushButton* getBoutonSand() const { return _bouton_sandbox; }
-    QPushButton* getBoutonTestA() const { return _bouton_test_a; }
-    QPushButton* getBoutonTestS() const { return _bouton_test_s; }
+    QPushButton* getBoutonJouer() const;
+    QPushButton* getBoutonSand() const;
+    QPushButton* getBoutonTestA() const;
+    QPushButton* getBoutonTestS() const;
 
 protected:
     void paintEvent(QPaintEvent *e);

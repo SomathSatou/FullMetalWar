@@ -23,6 +23,10 @@ SandBouton::SandBouton(QWidget *parent) : QWidget(parent)
     _layout->addWidget(_retour);
 }
 
+QPushButton *SandBouton::getBoutonRetour() const { return _retour; }
+
+QPushButton *SandBouton::getBoutonJouer() const { return _jouer; }
+
 void SandBouton::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;

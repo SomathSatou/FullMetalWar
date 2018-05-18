@@ -87,6 +87,12 @@ Vue_Formulaire::~Vue_Formulaire(){
     delete _controleur;
 }
 
+QPushButton *Vue_Formulaire::getBoutonRetour() const { return _formBouton->getBoutonRetour(); }
+
+QPushButton *Vue_Formulaire::getBoutonJouer() const { return _formBouton->getBoutonJouer(); }
+
+Controleur_Formulaire *Vue_Formulaire::getControleur() const { return _controleur; }
+
 void Vue_Formulaire::paintEvent(QPaintEvent *)
 {
     QStyleOption opt;

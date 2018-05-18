@@ -33,8 +33,8 @@ void MainWindow::setSand() {
 
 void MainWindow::setA() {
     std::vector<Joueur *> J;
-    J.push_back(new Joueur("Titi",Couleur::BLEU));
-    J.push_back(new Joueur("Toto",Couleur::VERT));
+    J.push_back(new JoueurAlphaBeta("Joueur 1",Couleur::JAUNE,true));
+    J.push_back(new JoueurAlphaBeta("Joueur 2",Couleur::ROUGE,false));
     std::vector<std::pair<typePiece,int>> P;
     P.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
     Controleur_Jeu* _controleur_jeu = new Controleur_Jeu(J,5,5,TypeCarte::PLAINES,false,P,this);
@@ -45,8 +45,8 @@ void MainWindow::setA() {
 
 void MainWindow::setS() {
     std::vector<Joueur *> J;
-    J.push_back(new Joueur("Titi",Couleur::BLEU));
-    J.push_back(new joueurStochastique("Toto",Couleur::ROUGE));
+    J.push_back(new joueurStochastique("Joueur 1",Couleur::BLEU,true));
+    J.push_back(new joueurStochastique("Joueur 2",Couleur::ROUGE,false));
     std::vector<std::pair<typePiece,int>> P;
     P.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
     Controleur_Jeu* _controleur_jeu = new Controleur_Jeu(J,5,5,TypeCarte::PLAINES,false,P,this);
@@ -56,11 +56,11 @@ void MainWindow::setS() {
 }
 
 void MainWindow::setJeu() {
-    Controleur_Formulaire* _controleur_form = _formulaire->getControleur();
-    Controleur_Jeu* _controleur_jeu = new Controleur_Jeu(_controleur_form->getListeJoueurs(),_controleur_form->getLongueur(),_controleur_form->getLargeur(),this);
-    connect(this,&MainWindow::sendKeyPressed,_controleur_jeu->getVueJeu()->getModelisation(),&ModelisationJeu::getKeyPressed);
-    connect(_controleur_jeu,&Controleur_Jeu::putScoreScreen,this,&MainWindow::setScore);
-    setCentralWidget(_controleur_jeu->getVueJeu());
+//    Controleur_Formulaire* _controleur_form = _formulaire->getControleur();
+//    Controleur_Jeu* _controleur_jeu = new Controleur_Jeu(_controleur_form->getListeJoueurs(),_controleur_form->getLongueur(),_controleur_form->getLargeur(),this);
+//    connect(this,&MainWindow::sendKeyPressed,_controleur_jeu->getVueJeu()->getModelisation(),&ModelisationJeu::getKeyPressed);
+//    connect(_controleur_jeu,&Controleur_Jeu::putScoreScreen,this,&MainWindow::setScore);
+//    setCentralWidget(_controleur_jeu->getVueJeu());
 }
 
 void MainWindow::setJeu_() {

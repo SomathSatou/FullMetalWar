@@ -1,5 +1,6 @@
 #include "controleur_formulaire.h"
-#include "Moteur/Piece/Piece.h"
+#include "Moteur/Piece/piece.h"
+
 
 Controleur_Formulaire::Controleur_Formulaire(QObject *parent) :
     QObject(parent),
@@ -7,34 +8,17 @@ Controleur_Formulaire::Controleur_Formulaire(QObject *parent) :
     _longueurMap(20),
     _largeurMap(20)
 {
-    _listeJoueurs.push_back(new Joueur("",Couleur::BLEU));
-    _listeJoueurs.push_back(new Joueur("",Couleur::BLEU));
+    _listeJoueurs.push_back(new Joueur("",Couleur::BLEU,true));
+    _listeJoueurs.push_back(new Joueur("",Couleur::BLEU,true));
 
 }
 
-/**********************************SLOTS******************************************/
+int Controleur_Formulaire::getLongueur() const { return _longueurMap; }
 
-void Controleur_Formulaire::setCouleur(int numero, int indexCouleur){
-    switch(indexCouleur){
-        case 0:
-            _listeJoueurs[numero]->setCouleur(Couleur::BLEU);
-            break;
-        case 1:
-            _listeJoueurs[numero]->setCouleur(Couleur::ROUGE);
-            break;
-        case 2:
-            _listeJoueurs[numero]->setCouleur(Couleur::VERT);
-            break;
-        case 3:
-            _listeJoueurs[numero]->setCouleur(Couleur::JAUNE);
-            break;
-    }
-
-    emit sendEnableJouer(testInformation());
-}
+int Controleur_Formulaire::getLargeur() const { return _largeurMap; }
 
 void Controleur_Formulaire::addJoueur() {
-    _listeJoueurs.push_back(new Joueur("",Couleur::BLEU));
+    _listeJoueurs.push_back(new Joueur("",Couleur::BLEU,true));
     emit sendEnableJouer(false);
 }
 
@@ -43,27 +27,7 @@ void Controleur_Formulaire::supprJoueur() {
     emit sendEnableJouer(testInformation());
 }
 
-void Controleur_Formulaire::setNom(int numero, const QString &nom){
-    _listeJoueurs[numero]->setPseudonyme(nom.toStdString());
-    emit sendEnableJouer(testInformation());
-}
-
-void Controleur_Formulaire::setLongueur(int longueur){
-    _longueurMap = longueur;
-}
-
-void Controleur_Formulaire::setLargeur(int largeur){
-    _largeurMap = largeur;
-}
-
-void Controleur_Formulaire::setPAturn(int numero, int value){
-    _listeJoueurs[numero]->setNombrePADebut(value);
-}
-
-
-void Controleur_Formulaire::setPAmax(int numero, int value){
-    _listeJoueurs[numero]->setNombrePAMax(value);
-}
+const std::vector<Joueur *> &Controleur_Formulaire::getListeJoueurs() const { return _listeJoueurs; }
 
 bool Controleur_Formulaire::testInformation() const {
     for(std::vector<Joueur*>::const_iterator i = _listeJoueurs.cbegin(); i != _listeJoueurs.cend(); i++) {
@@ -88,5 +52,42 @@ bool Controleur_Formulaire::testInformation() const {
     return true;
 }
 
+void Controleur_Formulaire::setLongueur(int longueur){
+    _longueurMap = longueur;
+}
 
+void Controleur_Formulaire::setLargeur(int largeur){
+    _largeurMap = largeur;
+}
 
+void Controleur_Formulaire::setCouleur(int numero, int indexCouleur){
+    switch(indexCouleur){
+    case 0:
+        _listeJoueurs[numero]->setCouleur(Couleur::BLEU);
+        break;
+    case 1:
+        _listeJoueurs[numero]->setCouleur(Couleur::ROUGE);
+        break;
+    case 2:
+        _listeJoueurs[numero]->setCouleur(Couleur::VERT);
+        break;
+    case 3:
+        _listeJoueurs[numero]->setCouleur(Couleur::JAUNE);
+        break;
+    }
+
+    emit sendEnableJouer(testInformation());
+}
+
+void Controleur_Formulaire::setNom(int numero, const QString &nom){
+    _listeJoueurs[numero]->setPseudonyme(nom.toStdString());
+    emit sendEnableJouer(testInformation());
+}
+
+void Controleur_Formulaire::setPAturn(int numero, int value){
+    _listeJoueurs[numero]->setNombrePADebut(value);
+}
+
+void Controleur_Formulaire::setPAmax(int numero, int value){
+    _listeJoueurs[numero]->setNombrePAMax(value);
+}

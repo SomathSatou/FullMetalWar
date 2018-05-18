@@ -6,16 +6,19 @@ class Vedette : public Destructeur
 {
 
 public:
-    Vedette(coordonnees coor, Couleur color,Joueur *j)
-        :Destructeur(coor, color,5, j){
-        setTypeDeplacement(new Deplacement_eau);
-    }
-    ~Vedette(){}
-    std::string infoPiece() const {
-        std::ostringstream oss;
-        oss << "Vedette";
-        return oss.str();
-    }
+    Vedette(Couleur couleur);
+
+    Vedette(const Vedette & v);
+
+    ~Vedette();
+
+
+    virtual Vedette * clone() override;
+
+    virtual typePiece type() override;
+
+
+    std::string infoPiece() const;
 
 };
 

@@ -1,14 +1,21 @@
 #ifndef MINERAI_H
 #define MINERAI_H
-#include "Moteur/Piece/Piece.h"
+#include "Moteur/Piece/piece.h"
 
 class Minerai : public Piece {
 
 public:
 
-    Minerai(coordonnees coor, Couleur color, Joueur * proprietaire);
+    Minerai(Couleur couleur);
+    Minerai(const Minerai & m);
+
     ~Minerai();
-    bool seDeplacer(int positionX, int positionY);
+
+
+    virtual Minerai * clone() override;
+
+    virtual typePiece type() override;
+
     std::string infoPiece() const;
 
 };

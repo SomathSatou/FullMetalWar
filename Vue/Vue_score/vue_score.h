@@ -15,7 +15,7 @@ class Vue_Score : public QWidget
     Q_OBJECT
 public:
     explicit Vue_Score(const QString& pseudo, int score, QWidget *parent = 0);
-    QPushButton* getRetour() const { return _retour; }
+    QPushButton* getRetour() const;
 
 private:
     QPushButton* _retour;

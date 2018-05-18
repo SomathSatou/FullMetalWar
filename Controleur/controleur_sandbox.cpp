@@ -7,10 +7,22 @@ Controleur_Sandbox::Controleur_Sandbox(QObject *parent) :
     _largeurMap(5),
     _minerais(false)
 {
-    _listeJoueurs.push_back(new Joueur("Titi",Couleur::BLEU));
-    _listeJoueurs.push_back(new Joueur("Jack",Couleur::ROUGE));
+    _listeJoueurs.push_back(new Joueur("Titi",Couleur::BLEU,true));
+    _listeJoueurs.push_back(new Joueur("Jack",Couleur::ROUGE,false));
 
 }
+
+int Controleur_Sandbox::getLongueur() const { return _longueurMap; }
+
+int Controleur_Sandbox::getLargeur() const { return _largeurMap; }
+
+TypeCarte Controleur_Sandbox::getType() const { return _type; }
+
+int Controleur_Sandbox::getMinerais() const { return _minerais; }
+
+std::vector<std::pair<typePiece, int> > Controleur_Sandbox::getListePiece() const {return _listePiece;}
+
+const std::vector<Joueur *> &Controleur_Sandbox::getListeJoueurs() const { return _listeJoueurs; }
 
 /**********************************SLOTS******************************************/
 
@@ -33,15 +45,15 @@ void Controleur_Sandbox::setCouleur(int numero, int indexCouleur){
     emit sendEnableJouer(testInformation());
 }
 
-void Controleur_Sandbox::addJoueur() {
-    _listeJoueurs.push_back(new Joueur("",Couleur::BLEU));
-    emit sendEnableJouer(false);
-}
+//void Controleur_Sandbox::addJoueur() {
+//    _listeJoueurs.push_back(new Joueur("",Couleur::BLEU,true));
+//    emit sendEnableJouer(false);
+//}
 
-void Controleur_Sandbox::supprJoueur() {
-    _listeJoueurs.pop_back();
-    emit sendEnableJouer(testInformation());
-}
+//void Controleur_Sandbox::supprJoueur() {
+//    _listeJoueurs.pop_back();
+//    emit sendEnableJouer(testInformation());
+//}
 
 void Controleur_Sandbox::afficheListe(){
     std::cout<< "***********************debut de l'armé ************"<<std::endl;
@@ -119,6 +131,30 @@ void Controleur_Sandbox::setPAturn(int numero, int value){
 
 void Controleur_Sandbox::setPAmax(int numero, int value){
     _listeJoueurs[numero]->setNombrePAMax(value);
+}
+
+void Controleur_Sandbox::setTypeJoueur(int numero, int value){
+    Joueur* J;
+    switch(value){
+        case 0 :
+             J = new Joueur(_listeJoueurs[numero]->getPseudonyme(),_listeJoueurs[numero]->getCouleur(),_listeJoueurs[numero]->getJoueur());
+            _listeJoueurs.erase(_listeJoueurs.begin()+numero);
+            if (numero == 0){_listeJoueurs.insert(_listeJoueurs.begin(),J);}
+            else{_listeJoueurs.push_back(J);}
+            break;
+        case 1 :
+            J = new joueurStochastique(_listeJoueurs[numero]->getPseudonyme(),_listeJoueurs[numero]->getCouleur(),_listeJoueurs[numero]->getJoueur());
+            _listeJoueurs.erase(_listeJoueurs.begin()+numero);
+            if (numero == 0){_listeJoueurs.insert(_listeJoueurs.begin(),J);}
+            else{_listeJoueurs.push_back(J);}
+            break;
+        case 2 :
+            J = new JoueurAlphaBeta(_listeJoueurs[numero]->getPseudonyme(),_listeJoueurs[numero]->getCouleur(),_listeJoueurs[numero]->getJoueur());
+            _listeJoueurs.erase(_listeJoueurs.begin()+numero);
+            if (numero == 0){_listeJoueurs.insert(_listeJoueurs.begin(),J);}
+            else{_listeJoueurs.push_back(J);}
+            break;
+    }
 }
 
 void Controleur_Sandbox::setChar(int x){

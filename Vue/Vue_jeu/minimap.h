@@ -29,7 +29,7 @@ private:
 signals:
 
 public slots:
-    void updateCase(QString typecase, bool piece, int couleur, int i);
+    void updateCase(QString typecase, bool piece, int Couleur, int i);
 };
 
 #endif // MINIMAP_H

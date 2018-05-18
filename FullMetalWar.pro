@@ -20,7 +20,8 @@ include(Controleur/controleur.pri)
 include(Vue/Modelisation3D/modelisation3d.pri)
 
 SOURCES += main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    defineclass.cpp
 
 HEADERS  += \ 
     mainwindow.h \
