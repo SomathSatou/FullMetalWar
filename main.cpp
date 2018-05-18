@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
 //        j1->getArbre()->Racine->save();
 //    }
 
-    //     return 0;
 
     /*
     Joueur * j1 = new Joueur("J1",Couleur::BLEU);
@@ -93,7 +92,7 @@ int main(int argc, char *argv[])
     for(auto & v : j.getCarte().voisins(coordonnees(6,6))){
         std::cout<< "\nsommet " << v.first << " " << v.second;
     }
-
-    return 0;
 */
+    return 0;
+
 }
