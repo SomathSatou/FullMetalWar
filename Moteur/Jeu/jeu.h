@@ -37,6 +37,7 @@ public:
 
     void init();
 
+    void resetGame(){_stochastique.Courant = _stochastique.Racine;}
 
     Arbre getStochastique() const;
     void setStochastique(const Arbre &stochastique);

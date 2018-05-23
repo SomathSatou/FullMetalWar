@@ -119,8 +119,8 @@ std::vector<Action> Noeud::jouer(){
         do{
             r++;
             act = randomAction(_carte,_prof%2);
-        }while(estFils(act));
-        best = new Noeud(act,this);
+        }while((estFils(act))&&(r<500));
+        if(r!=500){best = new Noeud(act,this);}
     }
     return best->_Actions;
 }
