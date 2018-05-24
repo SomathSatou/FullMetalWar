@@ -214,13 +214,11 @@ void Controleur_Jeu::setMoteur(Jeu *moteur)
 
 void Controleur_Jeu::getClickFinDeTour() {
     int tour = _moteur->getTour();
-    if (tour == 0){
         for(auto c :_moteur->getJoueurCourantPtr()->jouer(_moteur->getPlateau()) ){
 
             getClickModelisation(c.src.x,c.src.y);
             getPositionDeplacement(c.dst.x,c.dst.y);
         }
-    }
     _moteur->finDeTourJoueur();
 
     emit sendPAOnglet(_moteur->getJoueurCourantPtr()->getNombrePACourant(),
@@ -260,11 +258,11 @@ void Controleur_Jeu::getClickFinDeTour() {
     //        }
     //    }
 
-    for(auto c :_moteur->getJoueurCourantPtr()->jouer(_moteur->getPlateau()) ){
+//    for(auto c :_moteur->getJoueurCourantPtr()->jouer(_moteur->getPlateau()) ){
 
-        getClickModelisation(c.src.x,c.src.y);
-        getPositionDeplacement(c.dst.x,c.dst.y);
-    }
+//        getClickModelisation(c.src.x,c.src.y);
+//        getPositionDeplacement(c.dst.x,c.dst.y);
+//    }
 
 } // END
 

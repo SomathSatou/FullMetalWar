@@ -49,7 +49,7 @@ void MainWindow::setS() {
     J.push_back(new joueurStochastique("Joueur 2",Couleur::ROUGE,false));
     std::vector<std::pair<typePiece,int>> P;
     P.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
-    Controleur_Jeu* _controleur_jeu = new Controleur_Jeu(J,5,5,TypeCarte::PLAINES,false,P,this);
+    Controleur_Jeu* _controleur_jeu = new Controleur_Jeu(J,6,6,TypeCarte::PLAINES,false,P,this);
     connect(this,&MainWindow::sendKeyPressed,_controleur_jeu->getVueJeu()->getModelisation(),&ModelisationJeu::getKeyPressed);
     connect(_controleur_jeu,&Controleur_Jeu::putScoreScreen,this,&MainWindow::setScore);
     setCentralWidget(_controleur_jeu->getVueJeu());
