@@ -103,24 +103,49 @@ void Noeud::update(int val){
 }
 
 std::vector<Action> Noeud::jouer(){
-    int max = -1;
+    float max = -1;
+    float min = 1;
     Noeud * best = nullptr;
-    for (auto f : _fils){
-        if(f->getNbrV()/f->getNbrR() > max){
-            max = f->getNbrV()/f->getNbrR();
-            best = f;
+    if(_prof%2 == 0){
+        for (auto f : _fils){
+            if((float)f->getNbrV()/(float)f->getNbrR() > max){
+                max = (float)f->getNbrV()/(float)f->getNbrR();
+                best = f;
+            }
+        }
+
+        if (max < 0.25)
+        {
+            if(_prof%2 == 1 ){_carte.finTour();}
+            std::vector<Action> act;
+            int r =0;
+            do{
+                r++;
+                act = randomAction(_carte,_prof%2);
+            }while((estFils(act))&&(r<500));
+            if(r!=500){best = new Noeud(act,this);}
         }
     }
-    if (max < 0.5)
+    else
     {
-        if(_prof%2 == 1 ){_carte.finTour();}
-        std::vector<Action> act;
-        int r =0;
-        do{
-            r++;
-            act = randomAction(_carte,_prof%2);
-        }while((estFils(act))&&(r<500));
-        if(r!=500){best = new Noeud(act,this);}
+        for (auto f : _fils){
+            if((float)f->getNbrV()/(float)f->getNbrR() < min){
+                min = (float)f->getNbrV()/(float)f->getNbrR();
+                best = f;
+            }
+        }
+
+        if (min > -0.25)
+        {
+            if(_prof%2 == 1 ){_carte.finTour();}
+            std::vector<Action> act;
+            int r =0;
+            do{
+                r++;
+                act = randomAction(_carte,_prof%2);
+            }while((estFils(act))&&(r<500));
+            if(r!=500){best = new Noeud(act,this);}
+        }
     }
     return best->_Actions;
 }

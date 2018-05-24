@@ -227,7 +227,7 @@ int CarteStoch::gagnant(){
         if(Case.piece.proprio == 2)
         {J2 = false;}
     }
-    if (J1){return 0;}
+    if (J1){return -1;}
     if(J2){return 1;}
     return 0;
 }

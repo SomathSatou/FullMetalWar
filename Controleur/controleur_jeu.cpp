@@ -213,6 +213,14 @@ void Controleur_Jeu::setMoteur(Jeu *moteur)
 }
 
 void Controleur_Jeu::getClickFinDeTour() {
+    int tour = _moteur->getTour();
+    if (tour == 0){
+        for(auto c :_moteur->getJoueurCourantPtr()->jouer(_moteur->getPlateau()) ){
+
+            getClickModelisation(c.src.x,c.src.y);
+            getPositionDeplacement(c.dst.x,c.dst.y);
+        }
+    }
     _moteur->finDeTourJoueur();
 
     emit sendPAOnglet(_moteur->getJoueurCourantPtr()->getNombrePACourant(),
@@ -221,7 +229,7 @@ void Controleur_Jeu::getClickFinDeTour() {
 
     static_cast<QWidget*>(_parent)->setFocus(); // Permet de redonner le focus à la MainWindow afin d'écouter les entrées clavier
 
-    int tour = _moteur->getTour();
+    tour = _moteur->getTour();
     std::string joueur = _moteur->getJoueurCourantPtr()->getPseudonyme();
     //    if(tour != -1)
     emit sendValuesInfoBarre(tour,joueur);
