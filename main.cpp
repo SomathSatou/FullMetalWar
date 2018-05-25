@@ -6,12 +6,12 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-        QApplication a(argc, argv);
-        MainWindow w;
-        w.showFullScreen();
-        //w.showMaximized();
-        //w.showMinimized();
-        return a.exec();
+//        QApplication a(argc, argv);
+//        MainWindow w;
+//        w.showFullScreen();
+//        //w.showMaximized();
+//        //w.showMinimized();
+//        return a.exec();
 
 
     //    std::vector<std::pair<typePiece,int>> P;
@@ -24,37 +24,37 @@ int main(int argc, char *argv[])
 
     // test arbre
 
-//    int la = 5;
-//    int lo = 5;
-//    joueurStochastique * j1 = new joueurStochastique("Titi",Couleur::BLEU,true);
-//    joueurStochastique * j2 = new joueurStochastique("Toto",Couleur::ROUGE,false);
-//    std::vector<std::pair<typePiece,int>> testP;
-//    testP.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
-//    Jeu Test(j1,j2,testP,lo,la,TypeCarte::PLAINES,10);
-//    while(1){
-//   // for(int j = 1;j>0;j--){
+    int la = 6;
+    int lo = 6;
+    joueurStochastique * j1 = new joueurStochastique("Titi",Couleur::BLEU,true);
+    joueurStochastique * j2 = new joueurStochastique("Toto",Couleur::ROUGE,false);
+    std::vector<std::pair<typePiece,int>> testP;
+    testP.push_back(std::pair<typePiece,int>(typePiece::CHAR,1));
+    Jeu Test(j1,j2,testP,lo,la,TypeCarte::PLAINES,10);
+    while(1){
+   // for(int j = 1;j>0;j--){
 
-//        int i = 0;
-////        std::cout<<"*****************************************"<<std::endl
-////                <<"*                 tour "<<i<<"                  *"<<std::endl
-////               <<"*****************************************"<<std::endl;
-////        j2->getArbre()->Courant->getCarte().Afficher();
-//        while((!j1->getArbre()->Courant->getCarte().fini())&&(i<20)){
-//            i++;
-////            std::cout<<"*****************************************"<<std::endl
-////                    <<"*                 tour "<<i<<"                  *"<<std::endl
-////                   <<"*****************************************"<<std::endl;
-////            //tmp.getFils()[0]->getCarte().Afficher();
-//            j1->jouer(Test.getPlateau());
-//            // j2->getArbre()->Courant->getCarte().Afficher(); // affichage aprésj1
-//            if (!j1->getArbre()->Courant->getCarte().fini()) {j2->jouer(Test.getPlateau());}
-//            // j2->getArbre()->Courant->getCarte().Afficher(); // affichage aprésj2
-
-//        }
+        int i = 0;
+//        std::cout<<"*****************************************"<<std::endl
+//                <<"*                 tour "<<i<<"                  *"<<std::endl
+//               <<"*****************************************"<<std::endl;
 //        j2->getArbre()->Courant->getCarte().Afficher();
-//        j1->getArbre()->Racine->save();
-//        Test.resetGame();
-//    }
+        while((!j1->getArbre()->Courant->getCarte().fini())&&(i<20)){
+            i++;
+//            std::cout<<"*****************************************"<<std::endl
+//                    <<"*                 tour "<<i<<"                  *"<<std::endl
+//                   <<"*****************************************"<<std::endl;
+//            //tmp.getFils()[0]->getCarte().Afficher();
+            j1->jouer(Test.getPlateau());
+            // j2->getArbre()->Courant->getCarte().Afficher(); // affichage aprésj1
+            if (!j1->getArbre()->Courant->getCarte().fini()) {j2->jouer(Test.getPlateau());}
+            // j2->getArbre()->Courant->getCarte().Afficher(); // affichage aprésj2
+
+        }
+        j2->getArbre()->Courant->getCarte().Afficher();
+        j1->getArbre()->Racine->save();
+        Test.resetGame();
+    }
 
 
     /*
