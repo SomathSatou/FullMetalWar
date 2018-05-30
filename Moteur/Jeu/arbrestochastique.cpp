@@ -58,7 +58,9 @@ Noeud::Noeud(const Plateau & c) : _carte(c),_nbr_recherche(0),_nbr_valeur(0),_fi
 }
 
 Noeud::Noeud(std::vector<Action> Actions, Noeud *pere)
-    : _carte(pere->getCarte()),_nbr_recherche(0),_nbr_valeur(0),_Actions(Actions),_pere(pere),_prof(pere->getProf()+1) {
+    : _carte(pere->getCarte()),_nbr_recherche(0),
+      _nbr_valeur(0),_Actions(Actions),
+      _pere(pere),_prof(pere->getProf()+1) {
     for (auto A : _Actions) {
         switch(A.getFaire()){
         case typeAction::DEPLACER:

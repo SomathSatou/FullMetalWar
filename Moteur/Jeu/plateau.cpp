@@ -298,7 +298,8 @@ void Plateau::generationMer(){
 }
 
 void Plateau::generationStochastique(int &largeur, int &longueur){
-    std::ifstream f("stocha.dat",std::ios::in);
+    std::ifstream f("../FullMetalWar/Moteur/Jeu/stocha.dat",std::ios::in);
+    std::cout<<__FILE__<<std::endl;
     if(!f.is_open()){
         std::cout<<"erreur de lecture fichier"<<std::endl;
         exit(1);
