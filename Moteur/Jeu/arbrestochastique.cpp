@@ -115,7 +115,7 @@ std::vector<Action> Noeud::jouer(){
                 best = f;
             }
         }
-
+              /* a rajouter pour lancer le bot en aprentissage */
         if (max < 0.25)
         {
             if(_prof%2 == 1 ){_carte.finTour();}
@@ -136,7 +136,7 @@ std::vector<Action> Noeud::jouer(){
                 best = f;
             }
         }
-
+              /* a rajouter pour lancer le bot en aprentissage */
         if (min > -0.25)
         {
             if(_prof%2 == 1 ){_carte.finTour();}

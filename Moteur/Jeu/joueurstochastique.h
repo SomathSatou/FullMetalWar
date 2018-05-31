@@ -9,6 +9,7 @@ class joueurStochastique : public Joueur
 public:
     joueurStochastique(const std::string& pseudonyme, Couleur couleur,bool);
 
+    //methode hérité de joueur
     coups jouer(Plateau p) override;
 
     Arbre *getArbre();

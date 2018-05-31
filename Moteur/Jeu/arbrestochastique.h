@@ -12,13 +12,14 @@ std::vector<Action> randomAction(Plateau & c);
 
 class Noeud {
     public:
-        Noeud(const Plateau & c); // racine
-        Noeud(std::vector<Action> Actions,Noeud* pere); // noeud
+        // constructeur
+        Noeud(const Plateau & c); // constuit de la racine racine
+        Noeud(std::vector<Action> Actions,Noeud* pere); // constructeur des noeuds
 
         // methode stochastique
-        int roll_out();
+        int roll_out(); // permet de générer la fin de la partie de façons aléatoire et renvoi la valeur a mettre a jour
 
-        void update(int val);
+        void update(int val); // mets a jour des façons récusif les noeuds de l'abre
 
         std::vector<Action> jouer();
 
@@ -27,30 +28,34 @@ class Noeud {
         int getNbrV();
         CarteStoch getCarte() const;
         std::vector<Noeud *> getFils();
+        int getProf() const;
+        std::vector<Action> getActions() const;
+        Noeud *getPere() const;
 
+        //setters
         void setNbrV(int v);
         void setNbrR(int r);
         void setCarte(Plateau c);
-        void addFils(Noeud * n);
+        void addFils(Noeud * n);        
+        void setProf(int prof);
+        void setActions(const std::vector<Action> &Actions);
+        void setPere(Noeud *pere);
 
         // methode pour la sauvegarde et la lecture du fichier
         void save();
         void load();
         void AjouterFils(std::ifstream &f);
 
+        //me pour faire apparaitre l'abre grave a latk ( à coder )
         void toLatek();
+
+        //traduit un ligne du fichier en vector d'action
         std::vector<Action> trad(std::ifstream &f);
 
-        int getProf() const;
-        void setProf(int prof);
-
-        std::vector<Action> getActions() const;
-        void setActions(const std::vector<Action> &Actions);
-
+        //permet de crée les fils d'un noeud a partir du fichier de sauvegarde
         void saveFils(std::ofstream &f);
-        Noeud *getPere() const;
-        void setPere(Noeud *pere);
 
+        //verifie si il existe déjà un fils avec le même vector action que act
         bool estFils(std::vector<Action> act);
 private:
         CarteStoch _carte;
